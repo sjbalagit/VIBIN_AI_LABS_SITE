@@ -24,13 +24,16 @@
   var EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
   var ef = document.getElementById('early-form');
   var earlyData = {};
-  // Set data-endpoint on #early to your form service URL (Formspree, Basin, Getform, your own API).
+  // data-endpoint on #early is the Apps Script web app that writes to the sign-ups sheet (see README).
   // Each submit POSTs JSON: step 1 {email, step:"email"}, step 2 {email, work, province, ..., step:"details"}.
   var endpoint = (document.getElementById('early').dataset.endpoint || '').trim();
   function post(payload){
     if (!endpoint) { console.warn('Cadex early access: no data-endpoint set, nothing was sent.', payload); return Promise.resolve(); }
-    return fetch(endpoint, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(payload)})
-      .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); });
+    // text/plain on purpose: Apps Script can't answer the CORS preflight that application/json triggers.
+    return fetch(endpoint, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8','Accept':'application/json'}, body:JSON.stringify(payload)})
+      .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      // Apps Script answers 200 even when saving failed, so the body carries the real result.
+      .then(function(d){ if (!d || d.ok !== true) throw new Error((d && d.error) || 'not saved'); });
   }
   function earlyStep(n){
     document.querySelectorAll('.early-step').forEach(function(s){ s.hidden = s.dataset.step !== String(n); });

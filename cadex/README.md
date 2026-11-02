@@ -11,15 +11,24 @@ Keep all four next to each other. Instrument Sans loads from Google Fonts.
 
 ## Early access (live)
 The form runs on its own: email → "You're on the list" details → "Thanks!".
-To receive sign-ups, set your form service URL in index.html:
+Sign-ups go to a Google Sheet through a small Apps Script, `apps-script/early-access.gs`. Each email gets one row: Signed up, Email, What does your work involve?, Province.
 
-    <div class="early" id="early" data-endpoint="https://formspree.io/f/XXXX">
+To connect it:
+1. Open the sheet, then Extensions > Apps Script.
+2. Replace the editor contents with `apps-script/early-access.gs` and save.
+3. Choose `setup` in the function menu and click Run. Approve the permissions when asked. This also formats the sheet.
+4. Deploy > New deployment > Web app. Set Execute as: Me, and Who has access: Anyone. Copy the Web app URL, which ends in /exec.
+5. Set that URL in index.html:
 
-Each step POSTs JSON:
+       <div class="early" id="early" data-endpoint="https://script.google.com/macros/s/XXXX/exec">
+
+After changing the script later, publish it with Deploy > Manage deployments > Edit > New version. This keeps the same URL.
+
+Each step POSTs JSON as text/plain, because Apps Script can't answer the CORS preflight that application/json triggers:
 - step 1: { step: "email", email }
 - step 2 (Send): { step: "details", email, work: [...], province: [...], workOther?, provinceOther? }
   Skip sends nothing more (the email is already in).
-If step 1 fails, the visitor sees an error and can retry. With no endpoint set, nothing is sent (a warning shows in the console).
+The endpoint must answer with JSON containing `"ok": true`. If step 1 fails, the visitor sees an error and can retry. If step 2 fails, the visitor still sees "Thanks!" and the email stays recorded, without their answers. With no endpoint set, nothing is sent (a warning shows in the console).
 
 ## Before launch
 - Footer Privacy and Terms links point to #pricing — replace with real pages.
