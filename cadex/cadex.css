@@ -322,3 +322,24 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 }
 .early-err{font-size:14px;line-height:1.45;color:var(--clay-700)}
 .early-err[hidden]{display:none}
+
+/* privacy policy page */
+.legal{padding-block:clamp(48px,6vw,80px) clamp(64px,8vw,104px)}
+.legal .wrap{max-width:calc(720px + 2 * var(--legal-gutter,20px))}
+.legal h1{font-size:clamp(32px,4.4vw,48px);letter-spacing:-0.03em}
+.legal-date{margin-top:12px;margin-bottom:32px;font-size:15px;color:var(--text-2)}
+.legal h2{font-size:clamp(20px,2vw,24px);margin:44px 0 14px}
+.legal p{margin-top:14px;line-height:1.65}
+.legal h2+p{margin-top:0}
+.legal ul{margin:12px 0 0;padding-left:22px;line-height:1.65;list-style:disc}
+.legal li{display:list-item}
+.legal li+li{margin-top:8px}
+.legal a{text-decoration:underline;text-underline-offset:2px}
+.legal mark{background:var(--ochre-100);color:var(--ink-900);padding:0 4px;border-radius:3px}
+.legal-table{margin-top:18px;margin-bottom:18px}
+.legal table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.45}
+.legal th,.legal td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-bottom:1px solid var(--line-2)}
+.legal th{font-weight:600}
+.early-note{font-size:13px;line-height:1.45;color:var(--text-2)}
+.closing .early-note a,.closing .early-note a:hover{color:var(--green-800);text-decoration:underline;text-underline-offset:2px}
+.site-foot p a{color:inherit;text-decoration:underline;text-underline-offset:2px}

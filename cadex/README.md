@@ -3,11 +3,12 @@
 Upload this whole folder to your site, e.g. as yoursite.com/cadex/ (works on Netlify, Vercel, GitHub Pages, WordPress/cPanel file upload, etc.).
 
 - index.html — the page
+- privacy.html — the privacy policy
 - cadex.css — all styles
 - cadex.js — header, scroll reveal and the early-access form
 - shots/ — product screenshots
 
-Keep all four next to each other. Instrument Sans loads from Google Fonts.
+Keep them all next to each other. Instrument Sans loads from Google Fonts.
 
 ## Early access (live)
 The form runs on its own: email → "You're on the list" details → "Thanks!".
@@ -31,7 +32,8 @@ Each step POSTs JSON as text/plain, because Apps Script can't answer the CORS pr
 The endpoint must answer with JSON containing `"ok": true`. If step 1 fails, the visitor sees an error and can retry. If step 2 fails, the visitor still sees "Thanks!" and the email stays recorded, without their answers. With no endpoint set, nothing is sent (a warning shows in the console).
 
 ## Before launch
-- Footer Privacy and Terms links point to #pricing — replace with real pages.
+- Set the effective date in privacy.html to the day this merges to main and goes live.
+- Add a Terms page and footer link before the first customer signs up.
 - The Pro plan is hidden; remove the `hidden` attribute on #plan-pro to show it.
 
 ## Linking from the other site
