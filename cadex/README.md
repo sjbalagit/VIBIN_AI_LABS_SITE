@@ -29,10 +29,9 @@ Each step POSTs JSON as text/plain, because Apps Script can't answer the CORS pr
 - step 1: { step: "email", email }
 - step 2 (Send): { step: "details", email, work: [...], province: [...], workOther?, provinceOther? }
   Skip sends nothing more (the email is already in).
-The endpoint must answer with JSON containing `"ok": true`. If step 1 fails, the visitor sees an error and can retry. If step 2 fails, the visitor still sees "Thanks!" and the email stays recorded, without their answers. With no endpoint set, nothing is sent (a warning shows in the console).
+The endpoint must answer with JSON containing `"ok": true`. The next screen shows immediately and saving happens in the background, with one automatic retry. If step 1 still fails, the visitor returns to the first screen with an error and their email filled in. If step 2 fails, the visitor still sees "Thanks!" and the email stays recorded, without their answers. Choosing Other requires typing a description before Send; Skip is always available. With no endpoint set, nothing is sent (a warning shows in the console).
 
 ## Before launch
-- Set the effective date in privacy.html to the day this merges to main and goes live.
 - Add a Terms page and footer link before the first customer signs up.
 - The Pro plan is hidden; remove the `hidden` attribute on #plan-pro to show it.
 

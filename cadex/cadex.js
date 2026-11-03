@@ -24,21 +24,32 @@
   var EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
   var ef = document.getElementById('early-form');
   var earlyData = {};
+  var detailsSaved = false;
   // data-endpoint on #early is the Apps Script web app that writes to the sign-ups sheet (see README).
   // Each submit POSTs JSON: step 1 {email, step:"email"}, step 2 {email, work, province, ..., step:"details"}.
   var endpoint = (document.getElementById('early').dataset.endpoint || '').trim();
   function post(payload){
     if (!endpoint) { console.warn('Cadex early access: no data-endpoint set, nothing was sent.', payload); return Promise.resolve(); }
     // text/plain on purpose: Apps Script can't answer the CORS preflight that application/json triggers.
-    return fetch(endpoint, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8','Accept':'application/json'}, body:JSON.stringify(payload)})
+    return fetch(endpoint, {method:'POST', keepalive:true, headers:{'Content-Type':'text/plain;charset=utf-8','Accept':'application/json'}, body:JSON.stringify(payload)})
       .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       // Apps Script answers 200 even when saving failed, so the body carries the real result.
       .then(function(d){ if (!d || d.ok !== true) throw new Error((d && d.error) || 'not saved'); });
   }
+  // Saving takes Apps Script 2-3 seconds and visitors no longer wait on it, so try twice before giving up.
+  // Repeats are safe: the sheet keeps one row per email.
+  function save(payload){
+    return post(payload).catch(function(e){ console.error(e); return post(payload); });
+  }
   function earlyStep(n){
     document.querySelectorAll('.early-step').forEach(function(s){ s.hidden = s.dataset.step !== String(n); });
   }
+  function setOtherError(q, on){
+    q.querySelector('.early-other-err').hidden = !on;
+    q.querySelector('.early-other').setAttribute('aria-invalid', on);
+  }
   document.querySelectorAll('.early-q').forEach(function(q){
+    q.querySelector('.early-other').addEventListener('input', function(){ setOtherError(q, false); });
     q.addEventListener('click', function(e){
       var c = e.target.closest('.chip'); if (!c) return;
       var on = c.getAttribute('aria-pressed') !== 'true';
@@ -48,6 +59,7 @@
       var oi = q.querySelector('.early-other');
       var show = oc.getAttribute('aria-pressed') === 'true';
       oi.hidden = !show;
+      if (!show) setOtherError(q, false);
       if (show && c === oc) oi.focus();
     });
   });
@@ -58,10 +70,24 @@
       var oi = q.querySelector('.early-other');
       if (!oi.hidden && oi.value.trim()) earlyData[q.dataset.name + 'Other'] = oi.value.trim();
     });
-    if (send) post(Object.assign({step:'details'}, earlyData)).catch(function(e){ console.error(e); });
+    if (send) save(Object.assign({step:'details'}, earlyData))
+      .then(function(){ detailsSaved = true; })
+      .catch(function(e){ console.error(e); });
     earlyStep(3);
   }
-  em.addEventListener('submit', function(e){ e.preventDefault(); finish(true); });
+  // Choosing Other requires a description, otherwise we can't tell what the answer means. Skip stays available.
+  em.addEventListener('submit', function(e){
+    e.preventDefault();
+    var blank = null;
+    document.querySelectorAll('.early-q').forEach(function(q){
+      var oi = q.querySelector('.early-other');
+      var missing = !oi.hidden && !oi.value.trim();
+      setOtherError(q, missing);
+      if (missing && !blank) blank = oi;
+    });
+    if (blank) { blank.focus(); return; }
+    finish(true);
+  });
   document.getElementById('early-skip').addEventListener('click', function(){ finish(false); });
   if (ef) {
     ef.addEventListener('submit', function(ev){
@@ -70,13 +96,28 @@
       var v = input.value.trim();
       if (!EMAIL.test(v)) { input.focus(); return; }
       earlyData.email = v;
-      var btnS = ef.querySelector('button[type="submit"]'), err = document.getElementById('early-err');
-      err.hidden = true; btnS.disabled = true; btnS.textContent = 'Sending…';
-      post({step:'email', email:v}).then(function(){ earlyStep(2); })
-        .catch(function(e){ console.error(e); err.hidden = false; })
-        .then(function(){ btnS.disabled = false; btnS.textContent = 'Request access'; });
+      var err = document.getElementById('early-err');
+      err.hidden = true;
+      detailsSaved = false;
+      // Show the next screen straight away and save behind it. If saving fails, bring them back to
+      // retry with their email still filled in, unless the details step already saved the same email.
+      earlyStep(2);
+      save({step:'email', email:v}).catch(function(e){
+        console.error(e);
+        if (!detailsSaved) { earlyStep(1); err.hidden = false; }
+      });
     });
   }
+
+  // footer disclaimer
+  var dBtn = document.getElementById('disclaimer-btn');
+  var dText = document.getElementById('disclaimer');
+  dBtn.addEventListener('click', function(){
+    var open = dBtn.getAttribute('aria-expanded') !== 'true';
+    dBtn.setAttribute('aria-expanded', open);
+    dText.hidden = !open;
+    if (open) dText.closest('.site-foot').scrollIntoView({block:'end'});
+  });
 
   // Pro notify form
   var btn = document.getElementById('notify-btn');

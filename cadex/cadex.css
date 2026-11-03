@@ -335,7 +335,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .legal li{display:list-item}
 .legal li+li{margin-top:8px}
 .legal a{text-decoration:underline;text-underline-offset:2px}
-.legal mark{background:var(--ochre-100);color:var(--ink-900);padding:0 4px;border-radius:3px}
 .legal-table{margin-top:18px;margin-bottom:18px}
 .legal table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.45}
 .legal th,.legal td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-bottom:1px solid var(--line-2)}
@@ -343,3 +342,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .early-note{font-size:13px;line-height:1.45;color:var(--text-2)}
 .closing .early-note a,.closing .early-note a:hover{color:var(--green-800);text-decoration:underline;text-underline-offset:2px}
 .site-foot p a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.foot-btn{padding:0;border:0;background:none;cursor:pointer;font:inherit;font-size:15px;line-height:inherit;color:var(--text-2)}
+.foot-btn:hover{color:var(--text)}
+.site-foot p.foot-disclaimer{flex:0 0 100%;font-size:13px;line-height:1.45;max-width:none}
+.foot-disclaimer[hidden]{display:none}
+.early-other-err{margin-top:8px}

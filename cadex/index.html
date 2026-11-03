@@ -200,7 +200,7 @@
     </div>
     <div class="who-groups rv">
       <div class="who-group">
-        <p class="areas"><span>Land and right of way</span><span class="sep" aria-hidden="true"></span><span>Environment</span><span class="sep" aria-hidden="true"></span><span>Permitting</span><span class="sep" aria-hidden="true"></span><span>Regulatory</span><span class="sep" aria-hidden="true"></span><span>Planning</span><span class="sep" aria-hidden="true"></span><span>Natural resources</span></p>
+        <p class="areas"><span>Land and right of way</span><span class="sep" aria-hidden="true"></span><span>Environment</span><span class="sep" aria-hidden="true"></span><span>Permitting</span><span class="sep" aria-hidden="true"></span><span>Regulatory</span><span class="sep" aria-hidden="true"></span><span>Planning</span></p>
       </div>
       <div class="who-group">
         <h3 class="who-label">Across</h3>
@@ -208,7 +208,7 @@
           <div class="sector"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.4 3.6 5.5 5.6 5.5 10.5a5.5 5.5 0 0 1-11 0c0-2.6 1.4-4.3 2.6-5.4.2 1.7 1 2.8 2.1 3.3.6-2.7-.1-5.6.8-8.4Z"/></svg></span><b>Energy</b></div>
           <div class="sector"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 7 21M12 3l5 18M4.5 7h15M7 7l5 3.5L17 7M9.4 13h5.2M8.4 17h7.2"/></svg></span><b>Utilities</b></div>
           <div class="sector"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 3 5 21M15.5 3 19 21M12 4v2.5M12 10.5v3M12 17.5V20"/></svg></span><b>Transportation</b></div>
-          <div class="sector"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 7 10h2.8L6 15.5h12L14.2 10H17Z"/><path d="M12 15.5V21"/></svg></span><b>Forestry</b></div>
+          <div class="sector"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 7 10h2.8L6 15.5h12L14.2 10H17Z"/><path d="M12 15.5V21"/></svg></span><b>Natural resources</b></div>
           <div class="sector"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="1.6"/><path d="M12 10.6V21M9 21h6M8.6 5.6a4.8 4.8 0 0 0 0 6.8M15.4 5.6a4.8 4.8 0 0 1 0 6.8M5.8 2.8a8.8 8.8 0 0 0 0 12.4M18.2 2.8a8.8 8.8 0 0 1 0 12.4"/></svg></span><b>Telecommunications</b></div>
           <div class="sector"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9 12 4l8.5 5Z"/><path d="M6 11.5v6M10 11.5v6M14 11.5v6M18 11.5v6M4 20.5h16"/></svg></span><b>Government</b></div>
         </div>
@@ -309,17 +309,18 @@
         <fieldset class="early-q" data-name="work" data-multi="true">
           <legend>What does your work involve?</legend>
           <div class="chips">
-            <button class="chip" type="button" aria-pressed="false">Land services</button>
-            <button class="chip" type="button" aria-pressed="false">Environmental</button>
-            <button class="chip" type="button" aria-pressed="false">Forestry</button>
+            <button class="chip" type="button" aria-pressed="false">Land and right of way</button>
+            <button class="chip" type="button" aria-pressed="false">Environment</button>
+            <button class="chip" type="button" aria-pressed="false">Permitting</button>
             <button class="chip" type="button" aria-pressed="false">Regulatory</button>
             <button class="chip" type="button" aria-pressed="false">Planning</button>
             <button class="chip" type="button" aria-pressed="false">Other</button>
           </div>
           <label class="vh" for="early-work-other">Describe your work</label>
-          <input class="inp early-other" id="early-work-other" type="text" hidden>
+          <input class="inp early-other" id="early-work-other" type="text" placeholder="Describe your work" hidden>
+          <p class="early-err early-other-err" role="alert" hidden>Please tell us what your work involves.</p>
         </fieldset>
-        <fieldset class="early-q" data-name="province">
+        <fieldset class="early-q" data-name="province" data-multi="true">
           <legend>Province</legend>
           <div class="chips">
             <button class="chip" type="button" aria-pressed="false">BC</button>
@@ -327,7 +328,8 @@
             <button class="chip" type="button" aria-pressed="false">Other</button>
           </div>
           <label class="vh" for="early-prov-other">Province or region</label>
-          <input class="inp early-other" id="early-prov-other" type="text" hidden>
+          <input class="inp early-other" id="early-prov-other" type="text" placeholder="Province or region" hidden>
+          <p class="early-err early-other-err" role="alert" hidden>Please tell us your province or region.</p>
         </fieldset>
         <div class="early-acts">
           <button class="btn btn-primary btn-lg" type="submit">Send</button>
@@ -351,7 +353,9 @@
     <div class="foot-links">
       <a href="mailto:info@vibin.ca">info@vibin.ca</a>
       <a href="privacy.html">Privacy</a>
+      <button class="foot-btn" type="button" id="disclaimer-btn" aria-expanded="false" aria-controls="disclaimer">Disclaimer</button>
     </div>
+    <p class="foot-disclaimer" id="disclaimer" hidden>Product screens show sample data. Names, parcels and project details are fictional, and any resemblance to real people or properties is coincidental.</p>
   </div>
 </footer>
 
