@@ -6,7 +6,9 @@ Upload this whole folder to your site, e.g. as yoursite.com/cadex/ (works on Net
 - privacy.html — the privacy policy
 - cadex.css — all styles
 - cadex.js — header, scroll reveal and the early-access form
-- favicon.svg, favicon.png — browser tab and home screen icon
+- favicon.svg — browser tab icon, switches with light and dark mode
+- favicon.png — tab icon for browsers without SVG icons, and phone home screens
+- share.png — image in shared link previews
 - shots/ — product screenshots
 
 Keep them all next to each other. Instrument Sans loads from Google Fonts.
