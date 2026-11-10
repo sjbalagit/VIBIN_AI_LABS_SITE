@@ -2,14 +2,12 @@
 
 Upload this whole folder to your site, e.g. as yoursite.com/cadex/ (works on Netlify, Vercel, GitHub Pages, WordPress/cPanel file upload, etc.).
 
-- index.html — the page
+- index.html — the page, with its styles and scripts inside (scroll scenes, header, early-access form)
 - privacy.html — the privacy policy
-- cadex.css — all styles
-- cadex.js — header, scroll reveal and the early-access form
 - favicon.svg — browser tab icon
 - favicon.png — tab icon for browsers without SVG icons, and phone home screens
 - share.png — image in shared link previews
-- shots/ — product screenshots
+- shots/ — product screenshots (hero-chat.png is a 2x screenshot so it stays sharp on retina screens)
 
 Keep them all next to each other. Instrument Sans loads from Google Fonts.
 
@@ -36,7 +34,6 @@ The endpoint must answer with JSON containing `"ok": true`. The next screen show
 
 ## Before launch
 - Add a Terms page and footer link before the first customer signs up.
-- The Pro plan is hidden; remove the `hidden` attribute on #plan-pro to show it.
 
 ## Linking from the other site
 Link to the folder (e.g. /cadex/). To jump straight to the form, link to /cadex/#early.
