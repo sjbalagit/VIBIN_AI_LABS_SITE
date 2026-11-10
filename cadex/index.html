@@ -9,10 +9,11 @@
 <meta property="og:url" content="https://vibinlabs.si/cadex/">
 <meta property="og:title" content="Cadex">
 <meta property="og:description" content="Your AI Land Analyst">
-<meta property="og:image" content="https://vibinlabs.si/cadex/share.png">
-<meta property="og:image:width" content="512">
-<meta property="og:image:height" content="512">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://vibinlabs.si/cadex/share-wide.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cadex, your AI land analyst, beside a screenshot of the chat panel and project map">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0F1D15">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.png" type="image/png">
@@ -392,7 +393,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 :root .close{background:radial-gradient(70% 115% at 85% 118%,rgba(210,169,74,.45),transparent 62%),radial-gradient(55% 100% at 10% 0%,rgba(231,206,142,.55),transparent 62%),var(--close-bg)}
 :root .close .contours{opacity:.14}
 
-color:#B9B6AA;font-size:12px;padding-left:4px}
+
 
 /* static layout: phones, and anyone who prefers less motion */
 .static .runway{display:none}
@@ -425,7 +426,7 @@ color:#B9B6AA;font-size:12px;padding-left:4px}
   :root{--gap:80px}
   .hero h1{font-size:clamp(36px,10.5vw,44px)}
   .hero .sub{font-size:16px}
-  .hero .for{font-size:15px!important;margin-top:clamp(64px,24vh,240px)!important}
+  .hero .for{font-size:15px!important;margin-top:clamp(48px,12vh,120px)!important}
   .h2{font-size:clamp(26px,7.4vw,32px)}
   .lead{font-size:16px}
   .eyebrow{font-size:11px}
@@ -437,6 +438,26 @@ color:#B9B6AA;font-size:12px;padding-left:4px}
   :root:not([data-across]) .sector{font-size:14px;gap:10px}
   .recp{gap:9px;padding-left:12px}.recp .rec-btn{white-space:nowrap;font-size:12px;padding:0 10px;height:30px}
   .recp .rec-w i:nth-child(n+13){display:none}
+  /* tighter phone pass */
+  :root{--gap:64px}
+  .h2{font-size:clamp(24px,6.6vw,28px)}
+  .lead{font-size:15px;line-height:1.55}
+  .notes-row{gap:8px;margin-top:16px}
+  .notes-row .float{padding:8px 12px;gap:8px;font-size:13px;border-radius:11px}
+  .notes-row .float small{font-size:11.5px;margin-top:1px}
+  .notes-row .float .dot{width:6px;height:6px}
+  .q .card{padding:14px 16px;gap:8px}
+  .q h3{font-size:16px}.q p{font-size:14px;line-height:1.5}
+  .q .tags{display:none}
+  .q .bubble{font-size:14px;padding:9px 13px}
+  #ready .rcard b,.rcard b{font-size:16px}.rcard p{font-size:14px}
+  .roles{gap:8px}
+  .role{padding:14px 16px;gap:10px;min-height:0}
+  .role .rq{font-size:14px;line-height:1.45}.role .rn{font-size:11px}
+  .price-card{padding:20px;gap:18px}
+  .price{font-size:30px}.price-note{font-size:13px}
+  .feat li{font-size:13.5px;padding-block:9px;gap:8px}
+  .feat li::before{margin-top:6.5px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.screen img,.q .card,.q .more,.words span,.screen .asks .ab{transition:none}}
 /* bigger screens: the page widens and this scene scales up with it */
