@@ -471,6 +471,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .float small{font-size:12px}
 .status,.status span{font-size:13px}
 .recp .rec-t{font-size:15px}
+.early label,.early-sub{font-size:15px;line-height:1.5}
 .early-note{font-size:13px}
 @media (max-width:560px){
   .hero .sub,.lead{font-size:16px}
@@ -481,7 +482,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .li,.float,.notes-row .float,.price-note,.project .m{font-size:13px}
   .float small,.notes-row .float small{font-size:11.5px}
   .eyebrow{font-size:11px}
-  }
+  .early label,.early-sub{font-size:14px}
+}
+/* body text fills its card: Safari's "pretty" wrapping evens lines out and leaves a gap on the right */
+.q p,.rcard p,.role .rq,.feat li,.lead,.close p,.early-sub,.strip p,.early>label{text-wrap:wrap}
 /* bigger screens: the page widens and this scene scales up with it */
 @media (min-width:1600px){
   :root{--wrap:1320px}
