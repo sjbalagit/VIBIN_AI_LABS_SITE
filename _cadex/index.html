@@ -329,7 +329,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* folder status (tweak) */
 
 /* pricing */
-.pricing{padding-block:var(--gap)}
+.pricing{padding-block:var(--gap) calc(var(--gap) * 1.25)}
 .price-card{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(24px,4vw,56px);padding:clamp(24px,3.4vw,40px);border-radius:22px;margin-top:clamp(32px,4vw,48px)}
 .price-card .tier{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .price-card .tier h3{font-size:20px}
@@ -339,6 +339,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .price small{font:400 15px/1 var(--font);color:var(--ink-3);letter-spacing:0;margin-left:6px}
 .feat{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
 .feat li{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.45}
+.feat li:nth-child(-n+2){border-top:0;padding-top:0}
+@media (max-width:900px){.feat li:nth-child(2){border-top:1px solid var(--line);padding-top:10px}}
 .feat li::before{content:"";flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px}
 
 /* close: contour lines are back on the banner */
@@ -661,7 +663,7 @@ color:#B9B6AA;font-size:12px;padding-left:4px}
         <li>Built-in library of map layers, legislation and guidance for BC, Alberta and federal government</li>
         <li>Ask anything about your project, get answers with sources</li>
         <li>Ask for spatial analysis and see the results on the map</li>
-        <li>Five ready-made workflows: Overlap &amp; crossings check, Buffer &amp; proximity, Constraints screening, Parcel contact log, Draft from a template</li>
+        <li>Five ready-made workflows for common checks and paperwork</li>
         <li>Draw and edit on the map and export any layer as KMZ, Shapefile or GeoJSON</li>
         <li>Log conversations by dictating, typing or uploading an email, linked to people and parcels</li>
         <li>Export results, tables and communications to Excel or CSV, and drafts to Word or PDF</li>
