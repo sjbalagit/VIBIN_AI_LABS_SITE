@@ -249,7 +249,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* call question tweak */
 .typed{display:none}
 
-/* more to ask + ready from day one */
+/* ready from day one */
 .ready-grid{display:flex;flex-direction:column;gap:clamp(28px,3.5vw,44px)}
 .ready-text{display:flex;flex-direction:column;gap:14px}
 .cards2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}
@@ -268,9 +268,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .wf .i{color:var(--accent)}
 .li.cat .nm{font-weight:600}
 .li.sub{padding-left:34px}
-.more-ask{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(56px,7vw,88px)}
-.more-ask .row{display:flex;flex-wrap:wrap;gap:10px}
-.more-ask .bubble{align-self:auto;box-shadow:none;background:var(--glass);color:var(--ink);border:1px solid var(--glass-line)}
 .ready-h{margin-bottom:clamp(20px,3vw,28px);display:flex;flex-direction:column;gap:12px}
 .cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .rcard{display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:20px;min-width:0}
@@ -598,16 +595,6 @@ color:#B9B6AA;font-size:12px;padding-left:4px}
   <div class="runway" aria-hidden="true"></div>
 </section>
 
-<div class="more-ask wrap" hidden>
-  <span class="eyebrow">More to ask it</span>
-  <div class="row">
-    <span class="bubble">Which parcels sit within 30 m of the creek?</span>
-    <span class="bubble">Who did we last speak to about Lot 4?</span>
-    <span class="bubble">Summarize the grazing licence for me.</span>
-    <span class="bubble">Compare the two routes by length and Crown land crossed.</span>
-  </div>
-</div>
-
 <section class="scene" id="ready">
   <div class="pin">
     <div class="wrap ready-grid">
@@ -662,7 +649,6 @@ color:#B9B6AA;font-size:12px;padding-left:4px}
   <div class="wrap">
     <span class="eyebrow">Pricing</span>
     <h2 class="h2">One plan to start with.</h2>
-    <p class="lead" style="margin-top:14px">Bring in a folder, connect your layers, and ask it something you would otherwise spend the afternoon looking for.</p>
     <div class="price-card glass">
       <div class="tier">
         <div style="display:flex;align-items:center;gap:10px"><h3>Basic</h3><span class="pill">Available at launch</span></div>
