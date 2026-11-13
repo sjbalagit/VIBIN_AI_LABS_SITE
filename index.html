@@ -75,8 +75,8 @@ html[data-motion="fluid"] #fluid{display:block}
 html[data-motion="fluid"] .band .bg i{display:none}
 .band > svg{position:absolute;inset:0;width:100%;height:100%;opacity:.22;mix-blend-mode:multiply}
 .band .in{position:relative;max-width:920px;text-align:center;display:flex;flex-direction:column;gap:24px;align-items:center;padding-block:112px}
-.band h1{font-size:56px;line-height:1.06;font-weight:400;letter-spacing:-.04em;color:#1F1428;text-wrap:balance}
-.band p{font-size:19px;color:#2E2238;max-width:640px;text-wrap:pretty}
+.band h1{font-size:66px;line-height:1.06;font-weight:400;letter-spacing:-.04em;color:#1F1428;text-wrap:balance}
+.band p{font-size:21px;color:#2E2238;max-width:700px;text-wrap:pretty}
 .band .link{color:#1F1428}
 .band .link:hover{color:#5B3C78}
 
@@ -174,7 +174,7 @@ html[data-news="pill"] .news-pill{display:inline-flex}
 html[data-news="ribbon"] .news-ribbon{display:block}
 .news-ribbon{position:absolute;top:16px;right:16px;z-index:2;padding:7px 12px;border-radius:999px;background:#D2A94A;color:#1A1608;font-size:12px;font-weight:700;letter-spacing:.02em;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 html[data-news="float"] .news-float:not(.closed){display:flex}
-.news-float{opacity:0;transform:translateY(24px) scale(.98);pointer-events:none;transition:opacity .5s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.news-float{opacity:0;transform:translateY(48px);pointer-events:none;transition:opacity 1s ease,transform 1.4s cubic-bezier(.16,1,.3,1)}
 .news-float.in{opacity:1;transform:none;pointer-events:auto}
 @media (prefers-reduced-motion:reduce){.news-float{transform:none}}
 .news-float{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:19;width:300px;max-width:calc(100% - 32px);flex-direction:column;gap:10px;padding:18px;border-radius:16px;background:#F6F3EA;color:#3E4C43;border:1px solid #E2DCCB;box-shadow:0 20px 50px rgba(0,0,0,.45);font-size:14px;line-height:1.45}
@@ -243,8 +243,8 @@ html.dark .card:hover{border-color:rgba(255,255,255,.18)}
   .brand .mark{width:28px;height:28px;border-radius:7px}
   .band{min-height:0}
   .band .in{padding-block:80px;gap:20px}
-  .band h1{font-size:34px}
-  .band p{font-size:16px}
+  .band h1{font-size:38px}
+  .band p{font-size:17px}
   .products{padding-block:72px 64px;gap:40px}
   .sechead h2,.about h2{font-size:28px}
   .art,.stacked .art{height:240px}
@@ -278,7 +278,7 @@ html.dark .card:hover{border-color:rgba(255,255,255,.18)}
     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
     <div class="wrap in">
       <h1>We build applied AI products</h1>
-      <p>Practical agents and platforms doing the real work, built for people who aren't AI experts.</p>
+      <p>Practical agents and platforms doing the real work, built for people who aren't AI experts</p>
     </div>
   </section>
 
@@ -296,7 +296,7 @@ html.dark .card:hover{border-color:rgba(255,255,255,.18)}
         </div>
         <div class="body">
           <div class="top"><p class="name"><svg class="logo" viewBox="-2 -2 28 28" aria-hidden="true"><rect width="24" height="24" rx="5.5" fill="#1B3327"></rect><g transform="translate(2.6 2.8) scale(0.8)"><path d="M11 2 13.1 8.9 18.5 11 13.1 13.1 11 20 8.9 13.1 3.5 11 8.9 8.9Z" fill="none" stroke="#FAF8F2" stroke-width="1.6" stroke-linejoin="round"></path><path d="M11 2 13.1 8.9 11 11ZM18.5 11 13.1 13.1 11 11ZM11 20 8.9 13.1 11 11ZM3.5 11 8.9 8.9 11 11Z" fill="#FAF8F2"></path><rect x="16.6" y="16.6" width="3.8" height="3.8" rx="0.5" fill="#D6906F"></rect></g></svg><span>Cadex</span><span class="label">Web platform</span></p><span class="status">Early access</span></div>
-          <h3>An AI analyst for land and environmental projects.</h3>
+          <h3>An AI analyst for land and environmental projects</h3>
           <p>It reads the project’s documents, maps and records, then answers questions, runs spatial analysis and drafts the paperwork.</p>
           <a class="link stretch" href="cadex/">Visit Cadex <span aria-hidden="true">→</span></a>
         </div>
@@ -308,7 +308,7 @@ html.dark .card:hover{border-color:rgba(255,255,255,.18)}
         </div>
         <div class="body">
           <div class="top"><p class="name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" class="logo" aria-hidden="true"><defs><linearGradient id="gPixI" gradientUnits="userSpaceOnUse" x1="10" y1="85" x2="86" y2="12"><stop offset="0" stop-color="#6B3FE0"></stop><stop offset=".55" stop-color="#C26FCB"></stop><stop offset="1" stop-color="#EF7BA9"></stop></linearGradient><radialGradient id="bgGlowI" cx=".5" cy=".38" r=".7"><stop offset="0" stop-color="#3A2152"></stop><stop offset="1" stop-color="#140F1E"></stop></radialGradient></defs><rect width="96" height="96" rx="22" fill="url(#bgGlowI)"></rect><g transform="translate(12 12) scale(.75)"><g fill="url(#gPixI)"><rect x="10.5" y="18" width="10" height="10" rx="3"></rect><rect x="21.5" y="18" width="10" height="10" rx="3"></rect><rect x="65.5" y="18" width="10" height="10" rx="3"></rect><rect x="76.5" y="18" width="10" height="10" rx="3"></rect><rect x="10.5" y="29" width="10" height="10" rx="3"></rect><rect x="21.5" y="29" width="10" height="10" rx="3"></rect><rect x="65.5" y="29" width="10" height="10" rx="3"></rect><rect x="76.5" y="29" width="10" height="10" rx="3"></rect><rect x="21.5" y="40" width="10" height="10" rx="3"></rect><rect x="32.5" y="40" width="10" height="10" rx="3"></rect><rect x="54.5" y="40" width="10" height="10" rx="3"></rect><rect x="65.5" y="40" width="10" height="10" rx="3"></rect><rect x="21.5" y="51" width="10" height="10" rx="3"></rect><rect x="32.5" y="51" width="10" height="10" rx="3"></rect><rect x="54.5" y="51" width="10" height="10" rx="3"></rect><rect x="65.5" y="51" width="10" height="10" rx="3"></rect><rect x="32.5" y="62" width="10" height="10" rx="3"></rect><rect x="43.5" y="62" width="10" height="10" rx="3"></rect><rect x="54.5" y="62" width="10" height="10" rx="3"></rect><rect x="43.5" y="73" width="10" height="10" rx="3"></rect></g><g transform="translate(48.5 31) scale(.68) translate(-48.5 -36)"><rect x="46.3" y="4" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="46.3" y="9" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="51.3" y="9" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="41.3" y="14" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="46.3" y="14" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="51.3" y="14" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="36.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="41.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="46.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#FFE7D6"></rect><rect x="51.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="36.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="41.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="46.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#FFE7D6"></rect><rect x="51.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="56.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="36.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="41.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="46.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#FFE7D6"></rect><rect x="51.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="56.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="41.3" y="34" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="46.3" y="34" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="51.3" y="34" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="61" y="6" width="3" height="3" rx=".9" fill="#FFB893"></rect><rect x="33" y="10" width="3" height="3" rx=".9" fill="#EF7BA9"></rect></g></g></svg><span>Vibin</span><span class="label">iOS app</span></p><span class="status dev">In development</span></div>
-          <h3>An agentic investing app that teaches you to invest.</h3>
+          <h3>An agentic investing app that teaches you to invest</h3>
           <p>Beginners learn with an agent that remembers their plan, then graduate to paper and broker-connected trading.</p>
         </div>
       </article>
