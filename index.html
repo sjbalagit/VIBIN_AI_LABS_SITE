@@ -1,263 +1,418 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark" data-bg="aubergine" data-cards="light" data-fhover="lilac" data-news="float" data-ochre="analyst" data-motion="fluid">
 <head>
 <meta charset="utf-8">
-<title>VIBIN AI LABS</title>
-<script src="./vendor/react.js"></script>
-<script src="./vendor/react-dom.js"></script>
-<script src="./support.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIBIN AI LABS · Applied AI products</title>
+<meta name="description" content="VIBIN AI LABS builds applied AI products: Cadex, an AI land analyst for land and environmental projects, and Vibin, an agentic investing app for iPhone.">
+<link rel="canonical" href="https://vibinlabs.si/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VIBIN AI LABS">
+<meta property="og:url" content="https://vibinlabs.si/">
+<meta property="og:title" content="VIBIN AI LABS">
+<meta property="og:description" content="We build applied AI products. Practical agents and platforms doing the real work, built for people who aren't AI experts.">
+<meta property="og:image" content="https://vibinlabs.si/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="VIBIN AI LABS: We build applied AI products">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VIBIN AI LABS">
+<meta name="twitter:description" content="We build applied AI products. Practical agents and platforms doing the real work, built for people who aren't AI experts.">
+<meta name="twitter:image" content="https://vibinlabs.si/share.jpg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: the original site, minus its hero and research. Purple band opens the page, then products, about, footer.
+   Single light look on purpose, matching the live site. */
+:root{
+  --bg:#E9E4E3; --surface:#F3F0EF; --tile:#DCD6D3; --ink:#242424; --ink-2:#3B3836; --muted:#5F5A58;
+  --line:rgba(36,36,36,.14); --plum:#261A33; --plum-ink:#E1E1E1; --plum-muted:#C4B4CF; --plum-label:#C9B3D6;
+  --accent:#8A55B0; --ok:#4E8A5C;
+  --sans:Manrope,"Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.label{font-size:12px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.link{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:15px;font-weight:600}
+
+/* nav */
+header .wrap{padding-block:28px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.brand{display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.brand .mark{width:32px;height:32px;border-radius:8px;display:block;flex:none}
+.brand .mark.bare{border-radius:0;width:36px;height:36px;margin:-2px 0}
+header nav{display:flex;gap:32px;flex-wrap:wrap;font-size:15px}
+
+/* band */
+.band{position:relative;overflow:hidden;min-height:560px;display:flex;align-items:center;justify-content:center;background:#D9BFD9}
+.band .bg{position:absolute;inset:0;background:linear-gradient(120deg,#E6C9DC 0%,#D9BFD9 55%,#C9AFCF 100%);overflow:hidden}
+.band .bg i{position:absolute;inset:-12%;display:block;will-change:transform}
+.band .bg .b1{background:radial-gradient(ellipse 52% 62% at 22% 34%,#F6DEE8 0%,rgba(246,222,232,0) 60%)}
+.band .bg .b2{background:radial-gradient(ellipse 48% 54% at 80% 26%,#5B3C78 0%,rgba(91,60,120,0) 60%)}
+.band .bg .b3{background:radial-gradient(ellipse 60% 44% at 68% 92%,#5B3C78 0%,rgba(91,60,120,0) 55%)}
+html[data-motion="water"] .band .bg .b1{animation:drift1 19s ease-in-out infinite alternate}
+html[data-motion="water"] .band .bg .b2{animation:drift2 23s ease-in-out infinite alternate}
+html[data-motion="water"] .band .bg .b3{animation:drift3 29s ease-in-out infinite alternate}
+@keyframes drift1{0%{transform:translate(0,0) scale(1)}50%{transform:translate(2.5%,-2%) scale(1.04)}100%{transform:translate(-1.5%,2.5%) scale(1.02)}}
+@keyframes drift2{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-3%,2%) scale(1.05)}100%{transform:translate(1.5%,-1.5%) scale(.98)}}
+@keyframes drift3{0%{transform:translate(0,0) scale(1)}50%{transform:translate(2%,-2.5%) scale(1.03)}100%{transform:translate(-2.5%,1%) scale(1.05)}}
+html[data-motion="flow"] .band .bg .b1{animation:flow1 13s ease-in-out infinite alternate}
+html[data-motion="flow"] .band .bg .b2{animation:flow2 16s ease-in-out infinite alternate}
+html[data-motion="flow"] .band .bg .b3{animation:flow3 19s ease-in-out infinite alternate}
+@keyframes flow1{0%{transform:translate(0,0) scale(1)}35%{transform:translate(7%,-5%) scale(1.1)}70%{transform:translate(-4%,6%) scale(.96)}100%{transform:translate(5%,3%) scale(1.06)}}
+@keyframes flow2{0%{transform:translate(0,0) scale(1) rotate(0)}40%{transform:translate(-9%,6%) scale(1.14) rotate(4deg)}75%{transform:translate(-3%,-4%) scale(.95) rotate(-2deg)}100%{transform:translate(4%,3%) scale(1.08) rotate(2deg)}}
+@keyframes flow3{0%{transform:translate(0,0) scale(1)}45%{transform:translate(8%,-7%) scale(1.12)}100%{transform:translate(-6%,-2%) scale(1.04)}}
+@media (prefers-reduced-motion:reduce){html[data-motion] .band .bg i{animation:none!important}}
+#fluid{position:absolute;inset:0;width:100%;height:100%;display:none;filter:blur(28px);transform:scale(1.12)}
+html[data-motion="fluid"] #fluid{display:block}
+html[data-motion="fluid"] .band .bg i{display:none}
+.band > svg{position:absolute;inset:0;width:100%;height:100%;opacity:.22;mix-blend-mode:multiply}
+.band .in{position:relative;max-width:920px;text-align:center;display:flex;flex-direction:column;gap:24px;align-items:center;padding-block:112px}
+.band h1{font-size:56px;line-height:1.06;font-weight:400;letter-spacing:-.04em;color:#1F1428;text-wrap:balance}
+.band p{font-size:19px;color:#2E2238;max-width:640px;text-wrap:pretty}
+.band .link{color:#1F1428}
+.band .link:hover{color:#5B3C78}
+
+/* products */
+.products{padding-block:112px 96px;display:flex;flex-direction:column;gap:56px}
+.sechead{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;padding-bottom:8px}
+.sechead > div{display:flex;flex-direction:column;gap:12px}
+.sechead h2{margin:0;font-size:44px;line-height:1.1;font-weight:400;letter-spacing:-.035em;text-wrap:balance}
+.sechead p.side{max-width:440px;color:var(--muted);font-size:16px;text-wrap:pretty}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(520px,100%),1fr));gap:32px}
+.cards{perspective:1400px}
+.card h3{color:var(--ink)}
+.card{--rx:0deg;--ry:0deg;--lift:0px;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--card-line,rgba(36,36,36,.08));border-radius:16px;overflow:hidden;
+  box-shadow:var(--shadow,0 1px 2px rgba(31,20,40,.06),0 10px 20px -6px rgba(31,20,40,.10),0 30px 60px -18px rgba(31,20,40,.28));
+  transform:translateY(var(--lift)) rotateX(var(--rx)) rotateY(var(--ry));transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s}
+.card:hover{--lift:-6px;box-shadow:var(--shadow-hover,0 2px 4px rgba(31,20,40,.06),0 18px 30px -8px rgba(31,20,40,.14),0 44px 80px -20px rgba(31,20,40,.36))}
+.card .art{border-bottom:1px solid var(--card-line,rgba(36,36,36,.08))}
+.stacked .card .art{border-bottom:0}
+@media (prefers-reduced-motion:reduce){.card{transition:none;transform:none!important}}
+.art{height:300px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex:none}
+.art.cadex{background:radial-gradient(ellipse 70% 80% at 80% 10%,#1E3A2A,transparent 70%),#0F1D15;align-items:flex-end}
+.art.cadex img{display:block;width:74%;height:auto;max-width:none;border-radius:8px 8px 0 0;border:1px solid rgba(255,255,255,.16);border-bottom:0;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.note{position:absolute;display:flex;align-items:center;gap:9px;padding:9px 13px;border-radius:12px;font:500 13px/1.3 var(--sans);color:#F4F1E8;background:rgba(15,29,21,.86);border:1px solid rgba(255,255,255,.18);box-shadow:0 10px 30px rgba(0,0,0,.35);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);white-space:nowrap}
+.note .dot{width:7px;height:7px;border-radius:50%;background:#D2A94A;flex:none}
+.note small{display:block;font-size:11px;color:#8FB29E;font-weight:400;margin-top:1px}
+.note.n1{left:5%;top:14%}
+.note.n2{right:5%;bottom:16%}
+.card.linked{position:relative;transition:border-color .2s}
+.card.linked:hover{border-color:rgba(36,36,36,.3)}
+.card.linked:hover h3{color:var(--accent)}
+.stretch::after{content:"";position:absolute;inset:0}
+.name{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;letter-spacing:-.01em}
+.name .logo{width:26px;height:26px;flex:none}
+.name .label{margin-left:4px}
+.art.vibin{background:radial-gradient(ellipse 55% 65% at 50% 45%,#3A2152,transparent 70%),#140F1E}
+.vmark{width:150px;height:150px;filter:drop-shadow(0 12px 40px rgba(194,111,203,.35))}
+.phone{width:220px;height:260px;border:1.5px solid rgba(255,255,255,.35);border-bottom:0;border-radius:36px 36px 0 0;display:flex;flex-direction:column;gap:12px;padding:44px 20px 0}
+.phone i{display:block;height:10px;background:rgba(255,255,255,.2)}
+.body{padding:36px 36px 40px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.body .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted)}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.status.dev::before{background:transparent;border:1.5px solid var(--muted)}
+.card h3{font-size:30px;line-height:1.15;font-weight:400;letter-spacing:-.03em}
+.card p{color:var(--ink-2);text-wrap:pretty}
+
+/* stacked variant */
+.stacked .cards{grid-template-columns:1fr}
+.stacked .card{flex-direction:row}
+.stacked .art{width:50%;height:auto;min-height:380px}
+.stacked .art.cadex img{width:82%}
+.stacked .body{width:50%;justify-content:center;padding:48px}
+.stacked .card:nth-child(2){flex-direction:row-reverse}
+
+/* about */
+.about{padding-block:32px 128px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr));gap:48px;align-items:start}
+.about > div:first-child{display:flex;flex-direction:column;gap:12px}
+.about h2{font-size:44px;line-height:1.1;font-weight:400;letter-spacing:-.035em;text-wrap:balance}
+.about .text{display:flex;flex-direction:column;gap:20px;font-size:18px;color:var(--ink-2);text-wrap:pretty}
+.contact{display:flex;flex-direction:column;gap:8px;padding-top:12px;font-size:16px}
+.about .mail{font-weight:600;color:var(--ink);user-select:all}
+
+/* founders */
+.team{display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:1px solid var(--line);container-type:inline-size}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@container (max-width:520px){.people{grid-template-columns:1fr}}
+.person{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--surface);border:1px solid var(--card-line,var(--line));border-radius:14px;min-width:0;transition:transform .25s,border-color .25s,box-shadow .25s}
+.person:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 12px 28px -14px rgba(0,0,0,.5)}
+.person .av{width:44px;height:44px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:14px;font-weight:600;letter-spacing:.02em;color:#fff;background:linear-gradient(135deg,#6B3FE0,#C26FCB 55%,#EF7BA9)}
+.person .who{display:flex;flex-direction:column;gap:2px;min-width:0}
+.person b{font-size:16px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.person .li{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--muted)}
+.person .li svg{width:14px;height:14px;fill:currentColor}
+.person:hover .li{color:var(--accent)}
+.person .arrow{margin-left:auto;font-size:16px;color:var(--muted);transition:transform .25s,color .25s}
+html[data-fhover="white"] .person:hover{border-color:#fff}
+html[data-fhover="white"] .person:hover b,html[data-fhover="white"] .person:hover .li,html[data-fhover="white"] .person:hover .arrow{color:#fff}
+html[data-fhover="lilac"] .person:hover{border-color:#C9B3D6}
+html[data-fhover="lilac"] .person:hover b,html[data-fhover="lilac"] .person:hover .li,html[data-fhover="lilac"] .person:hover .arrow{color:#C9B3D6}
+.person:hover .arrow{transform:translate(2px,-2px);color:var(--accent)}
+
+/* launch news options */
+.news{display:none}
+.cmini{width:20px;height:20px;flex:none;display:block}
+html[data-news="bar"] .news-bar{display:flex}
+.news-bar{align-items:center;justify-content:center;gap:10px;padding:10px max(16px,env(safe-area-inset-left,0px));background:#F3F0EF;color:#3B3836!important;font-size:14px;text-align:center;border-bottom:1px solid rgba(36,36,36,.08)}
+.news-bar b{font-weight:600;color:#242424}
+.news-bar:hover{background:#FFFFFF}
+html[data-news="pill"] .news-pill{display:inline-flex}
+.news-pill{align-items:center;gap:10px;padding:6px 14px 6px 7px;border-radius:999px;background:rgba(255,255,255,.5);border:1px solid rgba(31,20,40,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#1F1428!important;font-size:14px;font-weight:500;transition:background .2s}
+.news-pill:hover{background:rgba(255,255,255,.75)}
+.news-pill .sep{width:1px;height:14px;background:rgba(31,20,40,.2)}
+.news-pill .go{font-weight:600}
+html[data-news="ribbon"] .news-ribbon{display:block}
+.news-ribbon{position:absolute;top:16px;right:16px;z-index:2;padding:7px 12px;border-radius:999px;background:#D2A94A;color:#1A1608;font-size:12px;font-weight:700;letter-spacing:.02em;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+html[data-news="float"] .news-float:not(.closed){display:flex}
+.news-float{opacity:0;transform:translateY(24px) scale(.98);pointer-events:none;transition:opacity .5s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.news-float.in{opacity:1;transform:none;pointer-events:auto}
+@media (prefers-reduced-motion:reduce){.news-float{transform:none}}
+.news-float{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:19;width:300px;max-width:calc(100% - 32px);flex-direction:column;gap:10px;padding:18px;border-radius:16px;background:#F6F3EA;color:#3E4C43;border:1px solid #E2DCCB;box-shadow:0 20px 50px rgba(0,0,0,.45);font-size:14px;line-height:1.45}
+.news-float .ft{display:flex;align-items:center;gap:8px}
+.news-float .label{color:#6B766E;font-size:11px}
+.news-float b{color:#14261C;font-weight:600}
+.news-float b{font-size:15px}
+html[data-ochre="soon"] .news-float .o1,html[data-ochre="analyst"] .news-float .o2{color:#A9802A}
+html[data-ochre="analyst"] .news-float .o2{font-weight:600}
+.news-float .line2{display:block;margin-top:3px}
+.news-float .btn{align-self:flex-start;padding:9px 14px;border-radius:999px;background:#2D5A3D;color:#F4F1E8!important;font-weight:600;font-size:13px}
+.news-float .btn:hover{background:#376B49}
+.news-float .x{position:absolute;top:8px;right:10px;border:0;background:none;color:#6B766E;font-size:20px;line-height:1;cursor:pointer;padding:4px}
+.news-float{position:fixed}
+@media (max-width:560px){.news-bar{font-size:13px}.news-pill{font-size:12.5px}.news-pill .sep,.news-pill .go{display:none}}
+
+/* footer */
+footer{background:var(--plum);color:var(--plum-ink)}
+footer .wrap{padding-block:64px 48px;display:flex;flex-direction:column;gap:56px}
+footer .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px}
+footer .brandblock{display:flex;flex-direction:column;gap:12px}
+footer .brandblock .brand{color:#fff}
+footer .brandblock p.tag{font-size:14px;color:var(--plum-muted);max-width:280px}
+footer .cols{display:flex;gap:96px;flex-wrap:wrap}
+footer nav{display:flex;flex-direction:column;gap:12px;font-size:14px}
+footer nav .label{color:var(--plum-label)}
+footer nav a{color:var(--plum-ink)}
+footer nav a:hover{color:#fff}
+footer .legal{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(225,225,225,.16);font-size:13px;color:var(--plum-muted)}
+
+/* black background tweak */
+html.dark{--ink:#F2EEF4; --ink-2:#CFC7D4; --muted:#9C93A3; --line:rgba(255,255,255,.12); --accent:#C79BE0; --card-line:rgba(255,255,255,.09); color-scheme:dark;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 20px -6px rgba(0,0,0,.35),0 30px 60px -18px rgba(0,0,0,.6);
+  --shadow-hover:0 2px 4px rgba(0,0,0,.3),0 18px 30px -8px rgba(0,0,0,.45),0 44px 80px -20px rgba(0,0,0,.7)}
+html[data-bg="charcoal"]{--bg:#1F1D22; --surface:#2A272E}
+html[data-bg="aubergine"]{--bg:#1C1622; --surface:#272030}
+html[data-bg="black"]{--bg:#0B0A0D; --surface:#16131A}
+/* card colour options */
+html[data-cards="lifted"]{--surface:#3A2F47; --card-line:rgba(255,255,255,.14)}
+html[data-cards="lifted"]:not(.dark){--surface:#FFFFFF}
+html[data-cards="lifted"] .card .body{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0) 60%)}
+html[data-cards="product"] .card:nth-child(1){--surface:#13241B; --card-line:rgba(143,178,158,.25)}
+html[data-cards="product"] .card:nth-child(2){--surface:#2A1B3A; --card-line:rgba(217,166,224,.22)}
+html[data-cards="product"] .card{--ink:#F2EEF4; --ink-2:#CFC7D4; --muted:#A9A1AE}
+html[data-cards="product"] .card:nth-child(1) .status::before{background:#8FB29E}
+html[data-cards="light"] .card{--surface:#F3F0EF; --ink:#242424; --ink-2:#3B3836; --muted:#5F5A58; --accent:#8A55B0; --line:rgba(36,36,36,.14); --card-line:rgba(255,255,255,.2)}
+html[data-cards="light"] .card a{color:#242424}
+html.dark a{color:var(--ink)}
+html.dark a:hover{color:var(--accent)}
+html.dark .band a,html.dark footer a{color:inherit}
+html.dark .card:hover{border-color:rgba(255,255,255,.18)}
+
+
+@media (max-width:860px){
+  .stacked .card,.stacked .card:nth-child(2){flex-direction:column}
+  .stacked .art,.stacked .body{width:100%}
+  .stacked .art{min-height:0;height:300px}
+  .stacked .body{padding:36px 36px 40px}
+  footer .cols{gap:56px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  header .wrap{flex-wrap:nowrap;gap:16px}
+  header nav{gap:16px;font-size:14px}
+  .brand{font-size:13px;gap:10px}
+  .brand .mark{width:28px;height:28px;border-radius:7px}
+  .band{min-height:0}
+  .band .in{padding-block:80px;gap:20px}
+  .band h1{font-size:34px}
+  .band p{font-size:16px}
+  .products{padding-block:72px 64px;gap:40px}
+  .sechead h2,.about h2{font-size:28px}
+  .art,.stacked .art{height:240px}
+  .art.cadex img,.stacked .art.cadex img{width:86%}
+  .note{font-size:11.5px;padding:7px 10px}
+  .note small{font-size:10px}
+  .note.n1{left:4%;top:8%}
+  .note.n2{right:4%;bottom:10%}
+  .vmark{width:120px;height:120px}
+  .body,.stacked .body{padding:28px 24px 32px}
+  .card h3{font-size:24px}
+  .about{padding-block:16px 80px;gap:24px}
+  .about .text{font-size:16px}
+}
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<style>
-body{margin:0;background:#E9E4E3}
-a{color:#242424;text-decoration:none}a:hover{color:#8A55B0}
-*{box-sizing:border-box}
-h1,h2,h3,p{margin:0}
-</style>
-</helmet>
-<div style="width: 100%; min-height: 100px; font-family: Manrope, 'Helvetica Neue', Arial, sans-serif; background: #E9E4E3; color: #242424; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased">
-
-<!-- NAV -->
-<header style="max-width: 1280px; margin: 0 auto; padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap">
-<a href="#top" style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #242424">VIBIN AI LABS</a>
-<nav aria-label="Primary" style="display: flex; gap: 32px; flex-wrap: wrap; font-size: 15px">
-<a href="#products" style="color: #242424">Products</a>
-<a href="#research" style="color: #242424">Research</a>
-<a href="#about" style="color: #242424">About</a>
-<a href="#contact" style="color: #242424">Contact</a>
-</nav>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img class="mark bare" id="labmark" src="labs-v-dark.png" width="32" height="32" alt="">VIBIN AI LABS</a>
+    <nav aria-label="Primary">
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
 </header>
 
-<!-- HERO -->
-<section id="top" style="max-width: 1280px; margin: 0 auto; padding: 128px 48px 112px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 32px">
+<main id="top">
+  <section class="band" aria-label="Introduction">
+    <div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><canvas id="fluid"></canvas></div>
+    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grain)"></rect></svg>
+    <div class="wrap in">
+      <h1>We build applied AI products</h1>
+      <p>Practical agents and platforms doing the real work, built for people who aren't AI experts.</p>
+    </div>
+  </section>
 
-<h1 style="font-size: 72px; line-height: 1.04; font-weight: 400; letter-spacing: -0.045em; max-width: 1000px; text-wrap: balance">An evolving frontier</h1>
-<p style="font-size: 21px; line-height: 1.5; max-width: 720px; color: #3B3836; letter-spacing: -0.01em; text-wrap: pretty">We are on a journey to unbounded recursive superintelligence<br><br></p>
-<div style="display: flex; gap: 28px; flex-wrap: wrap; justify-content: center; font-size: 15px; font-weight: 600">
-<a href="#research" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #242424">Read the research agenda <span aria-hidden="true">→</span></a>
-<a href="#products" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #5F5A58">See the products <span aria-hidden="true">→</span></a>
-</div>
-</section>
+  <section id="products" class="wrap products stacked">
+    <div class="sechead">
+      <h2>Our products</h2>
+    </div>
 
-<!-- FIELD BAND -->
-<section aria-label="Mission" style="position: relative; overflow: hidden; min-height: 520px; display: flex; align-items: center; justify-content: center; padding: 96px 48px; background: #D9BFD9">
-<div aria-hidden="true" style="position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 18% 30%, {{tint}} 0%, rgba(246,222,232,0) 60%), radial-gradient(ellipse 55% 60% at 85% 20%, #5B3C78 0%, rgba(91,60,120,0) 60%), radial-gradient(ellipse 70% 50% at 70% 100%, #5B3C78 0%, rgba(91,60,120,0) 55%), linear-gradient(120deg, #E6C9DC 0%, #D9BFD9 55%, #C9AFCF 100%)"></div>
-<svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.22; mix-blend-mode: multiply" xmlns="http://www.w3.org/2000/svg"><filter id="grainl"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grainl)"></rect></svg>
-<div style="position: relative; max-width: 880px; text-align: center; display: flex; flex-direction: column; gap: 24px; align-items: center">
-<h2 style="font-size: 44px; line-height: 1.12; font-weight: 400; letter-spacing: -0.035em; color: #1F1428; text-wrap: balance">Products are where our research meets the world. Research is where our products come from.</h2>
-<p style="font-size: 17px; color: #2E2238; max-width: 620px; text-wrap: pretty">We think the loop between the two is what shapes self-improvement research</p>
-</div>
-</section>
+    <div class="cards">
+      <article class="card linked">
+        <div class="art cadex">
+          <img src="cadex/shots/hero-chat.png" width="1931" height="1287" alt="Cadex answering a question about a project beside a map of Fort St. John with the affected parcels">
+          <div class="note n1" aria-hidden="true"><span class="dot"></span><span>2 overlaps on Crown tenures<small>TANTALIS · checked Oct 2</small></span></div>
+          <div class="note n2" aria-hidden="true"><span class="dot" style="background:#8FB29E"></span><span>Consent deadline · Nov 14<small>From the grazing licence file</small></span></div>
+        </div>
+        <div class="body">
+          <div class="top"><p class="name"><svg class="logo" viewBox="-2 -2 28 28" aria-hidden="true"><rect width="24" height="24" rx="5.5" fill="#1B3327"></rect><g transform="translate(2.6 2.8) scale(0.8)"><path d="M11 2 13.1 8.9 18.5 11 13.1 13.1 11 20 8.9 13.1 3.5 11 8.9 8.9Z" fill="none" stroke="#FAF8F2" stroke-width="1.6" stroke-linejoin="round"></path><path d="M11 2 13.1 8.9 11 11ZM18.5 11 13.1 13.1 11 11ZM11 20 8.9 13.1 11 11ZM3.5 11 8.9 8.9 11 11Z" fill="#FAF8F2"></path><rect x="16.6" y="16.6" width="3.8" height="3.8" rx="0.5" fill="#D6906F"></rect></g></svg><span>Cadex</span><span class="label">Web platform</span></p><span class="status">Early access</span></div>
+          <h3>An AI analyst for land and environmental projects.</h3>
+          <p>It reads the project’s documents, maps and records, then answers questions, runs spatial analysis and drafts the paperwork.</p>
+          <a class="link stretch" href="cadex/">Visit Cadex <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
 
-<!-- PRODUCTS -->
-<section id="products" style="max-width: 1280px; margin: 0 auto; padding: 112px 48px 96px; display: flex; flex-direction: column; gap: 56px">
-<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; padding-bottom: 24px; border-bottom: 1px solid rgba(36,36,36,0.14)">
-<div style="display: flex; flex-direction: column; gap: 12px">
-<p style="font-size: 12px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: #5F5A58">01 · Applied AI Products</p>
-<h2 style="font-size: 44px; line-height: 1.1; font-weight: 400; letter-spacing: -0.035em">Agents doing real work, for people who are not AI experts.</h2>
-</div>
-<p style="max-width: 480px; color: #5F5A58; font-size: 16px; text-wrap: pretty">Two products, two domains. Each one is a long-running research deployment we learn from.</p>
-</div>
+      <article class="card">
+        <div class="art vibin" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" class="vmark" aria-hidden="true"><defs><linearGradient id="gPixM" gradientUnits="userSpaceOnUse" x1="10" y1="85" x2="86" y2="12"><stop offset="0" stop-color="#6B3FE0"></stop><stop offset=".55" stop-color="#C26FCB"></stop><stop offset="1" stop-color="#EF7BA9"></stop></linearGradient></defs><g fill="url(#gPixM)"><rect x="10.5" y="18" width="10" height="10" rx="3"></rect><rect x="21.5" y="18" width="10" height="10" rx="3"></rect><rect x="65.5" y="18" width="10" height="10" rx="3"></rect><rect x="76.5" y="18" width="10" height="10" rx="3"></rect><rect x="10.5" y="29" width="10" height="10" rx="3"></rect><rect x="21.5" y="29" width="10" height="10" rx="3"></rect><rect x="65.5" y="29" width="10" height="10" rx="3"></rect><rect x="76.5" y="29" width="10" height="10" rx="3"></rect><rect x="21.5" y="40" width="10" height="10" rx="3"></rect><rect x="32.5" y="40" width="10" height="10" rx="3"></rect><rect x="54.5" y="40" width="10" height="10" rx="3"></rect><rect x="65.5" y="40" width="10" height="10" rx="3"></rect><rect x="21.5" y="51" width="10" height="10" rx="3"></rect><rect x="32.5" y="51" width="10" height="10" rx="3"></rect><rect x="54.5" y="51" width="10" height="10" rx="3"></rect><rect x="65.5" y="51" width="10" height="10" rx="3"></rect><rect x="32.5" y="62" width="10" height="10" rx="3"></rect><rect x="43.5" y="62" width="10" height="10" rx="3"></rect><rect x="54.5" y="62" width="10" height="10" rx="3"></rect><rect x="43.5" y="73" width="10" height="10" rx="3"></rect></g><g transform="translate(48.5 31) scale(.68) translate(-48.5 -36)"><rect x="46.3" y="4" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="46.3" y="9" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="51.3" y="9" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="41.3" y="14" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="46.3" y="14" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="51.3" y="14" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="36.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="41.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="46.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#FFE7D6"></rect><rect x="51.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="36.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="41.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="46.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#FFE7D6"></rect><rect x="51.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="56.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="36.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="41.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="46.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#FFE7D6"></rect><rect x="51.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="56.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="41.3" y="34" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="46.3" y="34" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="51.3" y="34" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="61" y="6" width="3" height="3" rx=".9" fill="#FFB893"></rect><rect x="33" y="10" width="3" height="3" rx=".9" fill="#EF7BA9"></rect></g></svg>
+        </div>
+        <div class="body">
+          <div class="top"><p class="name"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" class="logo" aria-hidden="true"><defs><linearGradient id="gPixI" gradientUnits="userSpaceOnUse" x1="10" y1="85" x2="86" y2="12"><stop offset="0" stop-color="#6B3FE0"></stop><stop offset=".55" stop-color="#C26FCB"></stop><stop offset="1" stop-color="#EF7BA9"></stop></linearGradient><radialGradient id="bgGlowI" cx=".5" cy=".38" r=".7"><stop offset="0" stop-color="#3A2152"></stop><stop offset="1" stop-color="#140F1E"></stop></radialGradient></defs><rect width="96" height="96" rx="22" fill="url(#bgGlowI)"></rect><g transform="translate(12 12) scale(.75)"><g fill="url(#gPixI)"><rect x="10.5" y="18" width="10" height="10" rx="3"></rect><rect x="21.5" y="18" width="10" height="10" rx="3"></rect><rect x="65.5" y="18" width="10" height="10" rx="3"></rect><rect x="76.5" y="18" width="10" height="10" rx="3"></rect><rect x="10.5" y="29" width="10" height="10" rx="3"></rect><rect x="21.5" y="29" width="10" height="10" rx="3"></rect><rect x="65.5" y="29" width="10" height="10" rx="3"></rect><rect x="76.5" y="29" width="10" height="10" rx="3"></rect><rect x="21.5" y="40" width="10" height="10" rx="3"></rect><rect x="32.5" y="40" width="10" height="10" rx="3"></rect><rect x="54.5" y="40" width="10" height="10" rx="3"></rect><rect x="65.5" y="40" width="10" height="10" rx="3"></rect><rect x="21.5" y="51" width="10" height="10" rx="3"></rect><rect x="32.5" y="51" width="10" height="10" rx="3"></rect><rect x="54.5" y="51" width="10" height="10" rx="3"></rect><rect x="65.5" y="51" width="10" height="10" rx="3"></rect><rect x="32.5" y="62" width="10" height="10" rx="3"></rect><rect x="43.5" y="62" width="10" height="10" rx="3"></rect><rect x="54.5" y="62" width="10" height="10" rx="3"></rect><rect x="43.5" y="73" width="10" height="10" rx="3"></rect></g><g transform="translate(48.5 31) scale(.68) translate(-48.5 -36)"><rect x="46.3" y="4" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="46.3" y="9" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="51.3" y="9" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="41.3" y="14" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="46.3" y="14" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="51.3" y="14" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="36.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="41.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="46.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#FFE7D6"></rect><rect x="51.3" y="19" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="36.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="41.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="46.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#FFE7D6"></rect><rect x="51.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="56.3" y="24" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="36.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="41.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="46.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#FFE7D6"></rect><rect x="51.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#FFB893"></rect><rect x="56.3" y="29" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="41.3" y="34" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="46.3" y="34" width="4.4" height="4.4" rx="1.3" fill="#EF7BA9"></rect><rect x="51.3" y="34" width="4.4" height="4.4" rx="1.3" fill="#E66E92"></rect><rect x="61" y="6" width="3" height="3" rx=".9" fill="#FFB893"></rect><rect x="33" y="10" width="3" height="3" rx=".9" fill="#EF7BA9"></rect></g></g></svg><span>Vibin</span><span class="label">iOS app</span></p><span class="status dev">In development</span></div>
+          <h3>An agentic investing app that teaches you to invest.</h3>
+          <p>Beginners learn with an agent that remembers their plan, then graduate to paper and broker-connected trading.</p>
+        </div>
+      </article>
+    </div>
+  </section>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr)); gap: 32px">
+  <section id="about" class="wrap about">
+    <div>
+      <h2>About us</h2>
+    </div>
+    <div class="text">
+      <p>VIBIN AI LABS is based out of Vancouver, British Columbia. We are a small team of engineers building AI agents and platforms for different fields.</p>
+      <p id="contact">For questions about our products, or to work with us, reach out at <span class="mail">info@vibinlabs.si</span></p>
+      <div class="team">
+        <p class="label">Founders</p>
+        <div class="people">
+          <a class="person" href="https://www.linkedin.com/in/saurav-roy-ubc" target="_blank" rel="noopener"><span class="av" aria-hidden="true">SR</span><span class="who"><b>Saurav Roy</b><span class="li"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="person" href="https://www.linkedin.com/in/shrabanti-bala-joya" target="_blank" rel="noopener"><span class="av" aria-hidden="true">SJ</span><span class="who"><b>Shrabanti Bala Joya</b><span class="li"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-<article style="display: flex; flex-direction: column; gap: 0; background: #F3F0EF; border: 1px solid rgba(36,36,36,0.08)">
-<div aria-hidden="true" style="height: 300px; background: #DCD6D3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center">
-<div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(36,36,36,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(36,36,36,0.07) 1px, transparent 1px); background-size: 40px 40px"></div>
-<svg width="300" height="200" viewBox="0 0 300 200" fill="none" stroke="#242424" stroke-width="1.5" style="position: relative"><path d="M20 150 L80 60 L150 110 L230 30 L280 90 L250 170 L120 180 Z" stroke-opacity="0.8"></path><path d="M80 60 L150 110 L120 180" stroke-opacity="0.4"></path><path d="M150 110 L250 170" stroke-opacity="0.4"></path><circle cx="150" cy="110" r="4" fill="#242424"></circle><circle cx="230" cy="30" r="4" fill="#242424"></circle><circle cx="80" cy="60" r="4" fill="#242424"></circle></svg>
-
-</div>
-<div style="padding: 36px 36px 40px; display: flex; flex-direction: column; gap: 16px">
-<p style="font-size: 12px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: #5F5A58">Cadex · Web platform</p>
-<h3 style="font-size: 30px; line-height: 1.15; font-weight: 400; letter-spacing: -0.03em">An AI analyst for land and environmental projects.</h3>
-<p style="color: #3B3836; text-wrap: pretty">It reads the project’s documents, maps and records, then answers questions, runs spatial analysis and drafts the paperwork.</p>
-<a href="cadex/" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 15px; font-weight: 600; color: #242424">Visit Cadex <span aria-hidden="true">→</span></a>
-</div>
-</article>
-
-<article style="display: flex; flex-direction: column; gap: 0; background: #F3F0EF; border: 1px solid rgba(36,36,36,0.08)">
-<div aria-hidden="true" style="height: 300px; background: #261A33; position: relative; overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
-<div style="width: 220px; height: 260px; border: 1.5px solid rgba(255,255,255,0.35); border-bottom: 0; border-radius: 36px 36px 0 0; display: flex; flex-direction: column; gap: 12px; padding: 44px 20px 0">
-<div style="height: 10px; width: 60%; background: rgba(255,255,255,0.35)"></div>
-<div style="height: 10px; width: 85%; background: rgba(255,255,255,0.2)"></div>
-<div style="height: 10px; width: 70%; background: rgba(255,255,255,0.2)"></div>
-<div style="margin-top: 20px; height: 64px; background: rgba(217,166,224,0.45)"></div>
-</div>
-
-</div>
-<div style="padding: 36px 36px 40px; display: flex; flex-direction: column; gap: 16px">
-<p style="font-size: 12px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: #5F5A58">Vibin · iOS app</p>
-<h3 style="font-size: 30px; line-height: 1.15; font-weight: 400; letter-spacing: -0.03em">An agentic investing app that teaches you to invest.</h3>
-<p style="color: #3B3836; text-wrap: pretty">Beginners learn with an agent that remembers their plan, then graduate to paper and broker-connected trading.&nbsp;</p>
-</div>
-</article>
-
-</div>
-</section>
-
-<!-- RESEARCH -->
-
-
-<!-- WRITING -->
-<section id="research" style="background: #261A33; color: #E1E1E1">
-<div style="max-width: 1280px; margin: 0 auto; padding: 112px 48px 104px; display: flex; flex-direction: column; gap: 64px">
-<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; padding-bottom: 24px; border-bottom: 1px solid rgba(225,225,225,0.16)">
-<div style="display: flex; flex-direction: column; gap: 12px">
-<p style="font-size: 12px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: #C9B3D6">02 · Superintelligence Research</p>
-<h2 style="font-size: 44px; line-height: 1.1; font-weight: 400; letter-spacing: -0.035em; color: #FFFFFF; max-width: 760px; text-wrap: balance">We study recursive self-improvement both with and without a boundary.</h2>
-</div>
-
-</div>
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr)); gap: 64px 48px">
-
-<article style="display: flex; flex-direction: column; gap: 20px">
-<p style="font-size: 12px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: #C9B3D6">Direction A</p>
-<h3 style="font-size: 32px; line-height: 1.15; font-weight: 400; letter-spacing: -0.03em; color: #FFFFFF">Bounded Meta-RSI Systems</h3>
-<p style="color: #E3D9EA; text-wrap: pretty">Self-improving systems with an explicit envelope. A meta-level improver edits a task agent's capabilities and its own improvement procedure, but only inside a fixed edit surface, checked by an independent verifier, and measured on benchmarks across domains.</p>
-
-<figure style="margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 16px">
-<svg role="img" aria-label="Diagram: six nodes joined in a closed loop with arrows running around it" viewBox="0 0 520 220" style="width: 100%; height: auto; display: block" fill="none" stroke="#D9A6E0" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
-<circle cx="260" cy="110" r="70"></circle>
-<path transform="translate(295 49.4) rotate(30)" d="M0 0 l-8 -5 m8 5 l-8 5"></path>
-<path transform="translate(295 170.6) rotate(150)" d="M0 0 l-8 -5 m8 5 l-8 5"></path>
-<path transform="translate(190 110) rotate(270)" d="M0 0 l-8 -5 m8 5 l-8 5"></path>
-<circle cx="260" cy="40" r="9" fill="#261A33"></circle>
-<circle cx="320.6" cy="75" r="9" fill="#261A33"></circle>
-<circle cx="320.6" cy="145" r="9" fill="#261A33"></circle>
-<circle cx="260" cy="180" r="9" fill="#261A33"></circle>
-<circle cx="199.4" cy="145" r="9" fill="#261A33"></circle>
-<circle cx="199.4" cy="75" r="9" fill="#261A33"></circle>
-</svg>
-
-</figure>
-</article>
-
-<article style="display: flex; flex-direction: column; gap: 20px">
-<p style="font-size: 12px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: #C9B3D6">Direction B</p>
-<h3 style="font-size: 32px; line-height: 1.15; font-weight: 400; letter-spacing: -0.03em; color: #FFFFFF">Open-ended RSI Systems</h3>
-<p style="color: #E3D9EA; text-wrap: pretty">Open-ended search over agents, capabilities and improvement procedures: systems that keep generating novel problems and solutions without a fixed objective.<br><br></p>
-
-<figure style="margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 16px">
-<svg role="img" aria-label="Diagram: a single starting agent branches outward into more and more agents, with no boundary, and the branches continue off the edge" viewBox="0 0 520 220" style="width: 100%; height: auto; display: block" fill="none" stroke="#D9A6E0" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
-<circle cx="60" cy="110" r="14" fill="#261A33"></circle>
-<path d="M74 110 C 110 110, 120 60, 160 60"></path>
-<path d="M74 110 C 110 110, 120 160, 160 160"></path>
-<circle cx="170" cy="60" r="10" fill="#261A33"></circle>
-<circle cx="170" cy="160" r="10" fill="#261A33"></circle>
-<path d="M180 60 C 210 60, 215 28, 250 28"></path>
-<path d="M180 60 C 210 60, 215 92, 250 92"></path>
-<path d="M180 160 C 210 160, 215 128, 250 128"></path>
-<path d="M180 160 C 210 160, 215 192, 250 192"></path>
-<circle cx="258" cy="28" r="8" fill="#261A33"></circle>
-<circle cx="258" cy="92" r="8" fill="#261A33"></circle>
-<circle cx="258" cy="128" r="8" fill="#261A33"></circle>
-<circle cx="258" cy="192" r="8" fill="#261A33"></circle>
-<g stroke-opacity="0.75">
-<path d="M266 28 C 300 28, 300 12, 340 12"></path>
-<path d="M266 28 C 300 28, 300 44, 340 44"></path>
-<path d="M266 92 C 300 92, 300 76, 340 76"></path>
-<path d="M266 92 C 300 92, 300 108, 340 108"></path>
-<path d="M266 128 C 300 128, 300 144, 340 144"></path>
-<path d="M266 192 C 300 192, 300 176, 340 176"></path>
-<path d="M266 192 C 300 192, 300 208, 340 208"></path>
-<circle cx="346" cy="12" r="6" fill="#261A33"></circle>
-<circle cx="346" cy="44" r="6" fill="#261A33"></circle>
-<circle cx="346" cy="76" r="6" fill="#261A33"></circle>
-<circle cx="346" cy="108" r="6" fill="#261A33"></circle>
-<circle cx="346" cy="144" r="6" fill="#261A33"></circle>
-<circle cx="346" cy="176" r="6" fill="#261A33"></circle>
-<circle cx="346" cy="208" r="6" fill="#261A33"></circle>
-</g>
-<g stroke-opacity="0.45">
-<path d="M352 12 C 390 12, 400 4, 440 4"></path>
-<path d="M352 44 C 390 44, 400 56, 440 56"></path>
-<path d="M352 76 C 390 76, 400 70, 440 70"></path>
-<path d="M352 108 C 390 108, 400 120, 440 120"></path>
-<path d="M352 144 C 390 144, 400 136, 440 136"></path>
-<path d="M352 176 C 390 176, 400 188, 440 188"></path>
-<path d="M352 208 C 390 208, 400 214, 440 214"></path>
-<circle cx="444" cy="4" r="4" fill="#261A33"></circle>
-<circle cx="444" cy="56" r="4" fill="#261A33"></circle>
-<circle cx="444" cy="70" r="4" fill="#261A33"></circle>
-<circle cx="444" cy="120" r="4" fill="#261A33"></circle>
-<circle cx="444" cy="136" r="4" fill="#261A33"></circle>
-<circle cx="444" cy="188" r="4" fill="#261A33"></circle>
-<circle cx="444" cy="214" r="4" fill="#261A33"></circle>
-</g>
-<g stroke-opacity="0.25">
-<path d="M448 56 L 500 50"></path>
-<path d="M448 70 L 500 78"></path>
-<path d="M448 120 L 500 114"></path>
-<path d="M448 136 L 500 142"></path>
-<path d="M448 188 L 500 184"></path>
-</g>
-</svg>
-
-</figure>
-</article>
-
-</div>
-</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" style="max-width: 1280px; margin: 0 auto; padding: 32px 48px 128px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 48px; align-items: start">
-<div style="display: flex; flex-direction: column; gap: 12px">
-<p style="font-size: 12px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: #5F5A58">03 · ABOUT</p>
-<h2 style="font-size: 44px; line-height: 1.1; font-weight: 400; letter-spacing: -0.035em; text-wrap: balance">Things about us</h2>
-</div>
-<div style="display: flex; flex-direction: column; gap: 20px; font-size: 18px; color: #3B3836; text-wrap: pretty">
-<p>VIBIN AI LABS is incorporated in British Columbia, Canada. We are a small team of researchers and engineers who believe the next generation of labs will ship products and publish research from the same loop.</p>
-<p>We work in the open where we can: our products are used by real people, our benchmarks and design documents are written to be read, and our research directions are stated plainly so they can be challenged.</p>
-<div id="contact" style="display: flex; flex-direction: column; gap: 8px; padding-top: 12px; font-size: 16px">
-<p style="font-size: 12px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: #5F5A58">Contact</p>
-<a href="mailto:info@vibinlabs.si" style="min-height: 44px; display: inline-flex; align-items: center; font-weight: 600">info@vibinlabs.si</a>
-</div>
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer style="background: #261A33; color: #E1E1E1">
-<div style="max-width: 1280px; margin: 0 auto; padding: 64px 48px 48px; display: flex; flex-direction: column; gap: 56px">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px">
-<div style="display: flex; flex-direction: column; gap: 12px">
-<p style="font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF">VIBIN AI LABS</p>
-<p style="font-size: 14px; color: #C4B4CF; max-width: 280px">Superintelligence research for an evolving frontier</p>
-</div>
-<div style="display: flex; gap: 96px">
-<nav aria-label="Lab" style="display: flex; flex-direction: column; gap: 12px; font-size: 14px">
-<p style="font-size: 12px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: #C9B3D6">Lab</p>
-<a href="#products" style="color: #E1E1E1">Products</a>
-<a href="#research" style="color: #E1E1E1">Research</a>
-<a href="#about" style="color: #E1E1E1">About</a>
-</nav>
-<nav aria-label="Products" style="display: flex; flex-direction: column; gap: 12px; font-size: 14px">
-<p style="font-size: 12px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: #C9B3D6">Products</p>
-<a href="cadex/" style="color: #E1E1E1">Cadex</a>
-<span style="color: #E1E1E1">Vibin</span>
-</nav>
-</div>
-</div>
-<div style="display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid rgba(225,225,225,0.16); font-size: 13px; color: #C4B4CF">
-<p>© 2026 VIBIN AI LABS INC. All rights reserved.</p>
-<p>British Columbia, Canada</p>
-</div>
-</div>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div class="brandblock">
+        <p class="brand">VIBIN AI LABS</p>
+        <p class="tag">Building applied AI products</p>
+      </div>
+      <div class="cols">
+        <nav aria-label="Company"><p class="label">Company</p><a href="#products">Products</a><a href="#about">About</a></nav>
+        <nav aria-label="Products"><p class="label">Products</p><a href="cadex/">Cadex</a><span>Vibin</span></nav>
+        <nav aria-label="Legal"><p class="label">Legal</p><a href="privacy.html">Privacy Policy</a></nav>
+      </div>
+    </div>
+    <div class="legal">
+      <p>© 2026 VIBIN AI LABS INC. All rights reserved.</p>
+      <p>Vancouver, British Columbia, Canada</p>
+    </div>
+  </div>
 </footer>
-
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"tint":{"editor":"color","default":"#F6DEE8","options":["#F6DEE8","#FBE9F0","#F1CFE0","#EBD9F1"],"section":"Mission band"},"$preview":{"width":1440,"height":4320}}'>
-class Component extends DCLogic {
-  renderVals() {
-    return { tint: this.props.tint ?? '#F6DEE8' };
+<aside class="news news-float" aria-label="Cadex launch">
+  <button type="button" class="x" aria-label="Close" onclick="this.parentNode.classList.add('closed');try{sessionStorage.setItem('cadexPopClosed','1')}catch(e){}">×</button>
+  <div class="ft"><span class="pl-cadex"><svg class="cmini" viewBox="-2 -2 28 28" aria-hidden="true"><rect width="24" height="24" rx="5.5" fill="#1B3327"></rect><g transform="translate(2.6 2.8) scale(0.8)"><path d="M11 2 13.1 8.9 18.5 11 13.1 13.1 11 20 8.9 13.1 3.5 11 8.9 8.9Z" fill="none" stroke="#FAF8F2" stroke-width="1.6" stroke-linejoin="round"></path><path d="M11 2 13.1 8.9 11 11ZM18.5 11 13.1 13.1 11 11ZM11 20 8.9 13.1 11 11ZM3.5 11 8.9 8.9 11 11Z" fill="#FAF8F2"></path><rect x="16.6" y="16.6" width="3.8" height="3.8" rx="0.5" fill="#D6906F"></rect></g></svg></span><span class="label">New from VIBIN AI LABS</span></div>
+  <p><b>Cadex is <span class="o1">launching soon</span>.</b><span class="line2">Your <span class="o2">AI land analyst</span> for land and environmental projects.</span></p>
+  <a class="btn" href="cadex/#early">Get early access →</a>
+</aside>
+<script>
+/* Fluid band: a small canvas of domain-warped noise, scaled up and blurred so the colours flow like water. */
+(function(){
+  var cv=document.getElementById('fluid');if(!cv)return;var cx=cv.getContext('2d');
+  var P=new Uint8Array(512);(function(){var p=[],i;for(i=0;i<256;i++)p[i]=i;var s=7;for(i=255;i>0;i--){s=(s*16807)%2147483647;var j=s%(i+1),k=p[i];p[i]=p[j];p[j]=k;}for(i=0;i<512;i++)P[i]=p[i&255];})();
+  function fade(t){return t*t*(3-2*t)}
+  function n2(x,y){var X=Math.floor(x),Y=Math.floor(y),xf=x-X,yf=y-Y;X&=255;Y&=255;
+    var a=P[P[X]+Y]/255,b=P[P[X+1]+Y]/255,c=P[P[X]+Y+1]/255,d=P[P[X+1]+Y+1]/255,u=fade(xf),v=fade(yf);
+    return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v;}
+  function fbm(x,y){return .55*n2(x,y)+.3*n2(x*2.03+5.2,y*2.03+1.3)+.15*n2(x*4.01+9.1,y*4.01+3.7);}
+  var pink=[246,222,232],lil=[217,191,217],mid=[201,175,207],pur=[91,60,120];
+  var W=0,H=0,img,run=false,raf=0,last=0,t0=performance.now(),vis=true;
+  function size(){var r=cv.getBoundingClientRect();W=160;H=Math.max(40,Math.round(160*r.height/Math.max(1,r.width)));cv.width=W;cv.height=H;img=cx.createImageData(W,H);}
+  function sm(a,b,x){x=Math.min(1,Math.max(0,(x-a)/(b-a)));return x*x*(3-2*x)}
+  function frame(now){
+    if(run)raf=requestAnimationFrame(frame);
+    if(now-last<33)return;last=now;var t=(now-t0)/1000,d=img.data,i=0;
+    for(var y=0;y<H;y++){var fy=y/H;for(var x=0;x<W;x++){var fx=x/W;
+      var qx=fx*2.2,qy=fy*1.2;
+      var w1=fbm(qx+t*.07,qy-t*.05);
+      var w2=fbm(qx+w1*1.9+1.7+t*.04,qy+w1*1.9+9.2-t*.03);
+      var pu=sm(.5,.92,w2*.72+fx*.45+fy*.1-.05);
+      var pk=sm(.62,.25,w2*.8+fx*.45);
+      var r=lil[0]+(pink[0]-lil[0])*pk,g=lil[1]+(pink[1]-lil[1])*pk,b=lil[2]+(pink[2]-lil[2])*pk;
+      var m=sm(.3,1,fx*.6+fy*.3)*.5;r+=(mid[0]-r)*m;g+=(mid[1]-g)*m;b+=(mid[2]-b)*m;
+      var k=pu*.85;r+=(pur[0]-r)*k;g+=(pur[1]-g)*k;b+=(pur[2]-b)*k;
+      d[i++]=r;d[i++]=g;d[i++]=b;d[i++]=255;}}
+    cx.putImageData(img,0,0);
   }
-}
+  var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.fluid=function(on){cancelAnimationFrame(raf);run=false;if(!on)return;size();last=0;
+    if(still||!vis){frame(performance.now());return;}run=true;raf=requestAnimationFrame(frame);};
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(document.documentElement.dataset.motion==='fluid')window.fluid(true);}).observe(cv);
+  addEventListener('resize',function(){if(run)size();});
+  if(document.documentElement.dataset.motion==='fluid')window.fluid(true);
+})();
+</script>
+<script>
+/* once closed, keep the pop-up hidden for the rest of this visit */
+var pop=document.querySelector('.news-float');
+try{if(sessionStorage.getItem('cadexPopClosed'))pop.classList.add('closed');}catch(e){}
+/* slide in a couple of seconds after the page loads */
+setTimeout(function(){pop.classList.add('in')},2500);
+</script>
+
+<script>
+/* gentle 3D tilt on the product cards */
+(function(){
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.card').forEach(function(c){
+      c.addEventListener('mousemove',function(e){var b=c.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;c.style.setProperty('--ry',(x*4).toFixed(2)+'deg');c.style.setProperty('--rx',(-y*3).toFixed(2)+'deg');});
+      c.addEventListener('mouseleave',function(){c.style.setProperty('--ry','0deg');c.style.setProperty('--rx','0deg');});
+    });
+  }
+})();
 </script>
 </body>
 </html>
