@@ -1,24 +1,13 @@
 # VIBIN_AI_LABS_SITE
 
-The VIBIN AI LABS website, published with GitHub Pages from the `main` branch.
+The VIBIN AI LABS company website at https://vibinlabs.si, published with GitHub Pages from the `main` branch.
 
-- `index.html` — the main site
-- `cadex/` — the Cadex product site, served at `/cadex/`
+- `index.html` — the home page (products, about, founders, Cadex launch pop-up)
+- `privacy.html` — the company privacy policy
+- `cadex/` — forwards old `vibinlabs.si/cadex/` links to https://cadexai.ca, keeping any `#early` on the end. The Cadex site itself lives in the CADEX-SITE repo.
+
+The previous research-lab home page is kept on the `parked/research-lab-site` branch.
 
 ## Run the site locally
 
-The site is plain static files, so there's nothing to install or build. You only need Python 3 (preinstalled on macOS).
-
-1. From the repo root, start a local server:
-
-   ```bash
-   python3 -m http.server 8765
-   ```
-
-2. Open http://localhost:8765 for the main site and http://localhost:8765/cadex/ for the Cadex site.
-
-3. Press `Ctrl+C` in the terminal to stop the server.
-
-If port 8765 is already in use, pick any other free port, for example `python3 -m http.server 9000`, and use that number in the URLs.
-
-Use a local server rather than opening `index.html` directly from Finder. Links such as "Visit Cadex" point to `cadex/`, which only resolves to `cadex/index.html` when a server is running.
+The site is plain static files. From the repo root run `python3 -m http.server 8765` and open http://localhost:8765. Press `Ctrl+C` to stop.
