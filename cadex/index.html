@@ -538,6 +538,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media (max-width:560px){.early .chip{height:44px;padding:0 16px}.early-skip{padding:12px 4px}}
 </style>
+<script>
+/* arriving with a link like #early: jump straight there instead of smooth-scrolling through the page */
+if(location.hash){document.documentElement.style.scrollBehavior='auto';addEventListener('load',function(){var el=document.getElementById(location.hash.slice(1));if(el)el.scrollIntoView({behavior:'instant',block:'start'});setTimeout(function(){document.documentElement.style.scrollBehavior=''},100);});}
+</script>
 </head>
 <body>
 

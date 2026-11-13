@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="VIBIN AI LABS">
 <meta name="twitter:description" content="We build applied AI products. Practical agents and platforms doing the real work, built for people who aren't AI experts.">
 <meta name="twitter:image" content="https://vibinlabs.si/share.jpg">
-<link rel="icon" type="image/png" href="favicon.png?v=2">
+<link rel="icon" type="image/png" href="favicon.png?v=3">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
@@ -179,6 +179,11 @@ html[data-news="float"] .news-float:not(.closed){display:flex}
 @media (prefers-reduced-motion:reduce){.news-float{transform:none}}
 .news-float{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:19;width:300px;max-width:calc(100% - 32px);flex-direction:column;gap:10px;padding:18px;border-radius:16px;background:#F6F3EA;color:#3E4C43;border:1px solid #E2DCCB;box-shadow:0 20px 50px rgba(0,0,0,.45);font-size:14px;line-height:1.45}
 .news-float .ft{display:flex;align-items:center;gap:8px}
+.news-float .pop-link{color:inherit!important;text-decoration:none}
+.news-float .pop-link::after{content:"";position:absolute;inset:0;border-radius:16px}
+.news-float:hover .pop-link b{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.news-float .btn,.news-float .x{position:relative;z-index:1}
+.news-float .x{position:absolute}
 .news-float .label{color:#6B766E;font-size:11px}
 .news-float b{color:#14261C;font-weight:600}
 .news-float b{font-size:15px}
@@ -355,7 +360,7 @@ html.dark .card:hover{border-color:rgba(255,255,255,.18)}
 <aside class="news news-float" aria-label="Cadex launch">
   <button type="button" class="x" aria-label="Close" onclick="this.parentNode.classList.add('closed');try{sessionStorage.setItem('cadexPopClosed','1')}catch(e){}">×</button>
   <div class="ft"><span class="pl-cadex"><svg class="cmini" viewBox="-2 -2 28 28" aria-hidden="true"><rect width="24" height="24" rx="5.5" fill="#1B3327"></rect><g transform="translate(2.6 2.8) scale(0.8)"><path d="M11 2 13.1 8.9 18.5 11 13.1 13.1 11 20 8.9 13.1 3.5 11 8.9 8.9Z" fill="none" stroke="#FAF8F2" stroke-width="1.6" stroke-linejoin="round"></path><path d="M11 2 13.1 8.9 11 11ZM18.5 11 13.1 13.1 11 11ZM11 20 8.9 13.1 11 11ZM3.5 11 8.9 8.9 11 11Z" fill="#FAF8F2"></path><rect x="16.6" y="16.6" width="3.8" height="3.8" rx="0.5" fill="#D6906F"></rect></g></svg></span><span class="label">New from VIBIN AI LABS</span></div>
-  <p><b>Cadex is <span class="o1">launching soon</span>.</b><span class="line2">Your <span class="o2">AI land analyst</span> for land and environmental projects.</span></p>
+  <p><a class="pop-link" href="cadex/"><b>Cadex is <span class="o1">launching soon</span>.</b></a><span class="line2">Your <span class="o2">AI land analyst</span> for land and environmental projects.</span></p>
   <a class="btn" href="cadex/#early">Get early access →</a>
 </aside>
 <script>
