@@ -51,7 +51,7 @@ header .wrap{padding-block:28px;display:flex;align-items:center;justify-content:
 header nav{display:flex;gap:32px;flex-wrap:wrap;font-size:15px}
 
 /* band */
-.band{position:relative;overflow:hidden;min-height:560px;display:flex;align-items:center;justify-content:center;background:#D9BFD9}
+.band{position:relative;overflow:hidden;contain:paint;min-height:560px;display:flex;align-items:center;justify-content:center;background:#D9BFD9}
 .band .bg{position:absolute;inset:0;background:linear-gradient(120deg,#E6C9DC 0%,#D9BFD9 55%,#C9AFCF 100%);overflow:hidden}
 .band .bg i{position:absolute;inset:-12%;display:block;will-change:transform}
 .band .bg .b1{background:radial-gradient(ellipse 52% 62% at 22% 34%,#F6DEE8 0%,rgba(246,222,232,0) 60%)}
@@ -122,7 +122,7 @@ html[data-motion="fluid"] .band .bg i{display:none}
 .status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok)}
 .status.dev::before{background:transparent;border:1.5px solid var(--muted)}
 .card h3{font-size:30px;line-height:1.15;font-weight:400;letter-spacing:-.03em}
-.card p{color:var(--ink-2);text-wrap:pretty}
+.card p{color:var(--ink-2);text-wrap:wrap}
 
 /* stacked variant */
 .stacked .cards{grid-template-columns:1fr}
@@ -152,6 +152,7 @@ html[data-motion="fluid"] .band .bg i{display:none}
 .person .li{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--muted)}
 .person .li svg{width:14px;height:14px;fill:currentColor}
 .person:hover .li{color:var(--accent)}
+.person .arrow svg{width:16px;height:16px;display:block}
 .person .arrow{margin-left:auto;font-size:16px;color:var(--muted);transition:transform .25s,color .25s}
 html[data-fhover="white"] .person:hover{border-color:#fff}
 html[data-fhover="white"] .person:hover b,html[data-fhover="white"] .person:hover .li,html[data-fhover="white"] .person:hover .arrow{color:#fff}
@@ -174,10 +175,11 @@ html[data-news="pill"] .news-pill{display:inline-flex}
 html[data-news="ribbon"] .news-ribbon{display:block}
 .news-ribbon{position:absolute;top:16px;right:16px;z-index:2;padding:7px 12px;border-radius:999px;background:#D2A94A;color:#1A1608;font-size:12px;font-weight:700;letter-spacing:.02em;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 html[data-news="float"] .news-float:not(.closed){display:flex}
-.news-float{opacity:0;transform:translateY(48px);pointer-events:none;transition:opacity 1s ease,transform 1.4s cubic-bezier(.16,1,.3,1)}
+.pop-wrap{position:fixed;left:0;bottom:0;z-index:19;overflow:hidden;pointer-events:none;padding:40px 40px calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));max-width:100%}
+.news-float{opacity:0;transform:translateY(calc(100% + 24px));pointer-events:none;transition:opacity 1s ease,transform 1.4s cubic-bezier(.16,1,.3,1)}
 .news-float.in{opacity:1;transform:none;pointer-events:auto}
 @media (prefers-reduced-motion:reduce){.news-float{transform:none}}
-.news-float{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:19;width:300px;max-width:calc(100% - 32px);flex-direction:column;gap:10px;padding:18px;border-radius:16px;background:#F6F3EA;color:#3E4C43;border:1px solid #E2DCCB;box-shadow:0 20px 50px rgba(0,0,0,.45);font-size:14px;line-height:1.45}
+.news-float{position:relative;width:300px;max-width:calc(100vw - 32px);flex-direction:column;gap:10px;padding:18px;border-radius:16px;background:#F6F3EA;color:#3E4C43;border:1px solid #E2DCCB;box-shadow:0 12px 32px rgba(0,0,0,.45);font-size:14px;line-height:1.45}
 .news-float .ft{display:flex;align-items:center;gap:8px}
 .news-float .pop-link{color:inherit!important;text-decoration:none}
 .news-float .pop-link::after{content:"";position:absolute;inset:0;border-radius:16px}
@@ -193,7 +195,6 @@ html[data-ochre="analyst"] .news-float .o2{font-weight:600}
 .news-float .btn{align-self:flex-start;padding:9px 14px;border-radius:999px;background:#2D5A3D;color:#F4F1E8!important;font-weight:600;font-size:13px}
 .news-float .btn:hover{background:#376B49}
 .news-float .x{position:absolute;top:8px;right:10px;border:0;background:none;color:#6B766E;font-size:20px;line-height:1;cursor:pointer;padding:4px}
-.news-float{position:fixed}
 @media (max-width:560px){.news-bar{font-size:13px}.news-pill{font-size:12.5px}.news-pill .sep,.news-pill .go{display:none}}
 
 /* footer */
@@ -238,7 +239,7 @@ html.dark .card:hover{border-color:rgba(255,255,255,.18)}
   .stacked .art,.stacked .body{width:100%}
   .stacked .art{min-height:0;height:300px}
   .stacked .body{padding:36px 36px 40px}
-  footer .cols{gap:56px}
+  footer .cols{gap:48px}
 }
 @media (max-width:560px){
   body{font-size:16px}
@@ -261,8 +262,12 @@ html.dark .card:hover{border-color:rgba(255,255,255,.18)}
   .vmark{width:120px;height:120px}
   .body,.stacked .body{padding:28px 24px 32px}
   .card h3{font-size:24px}
+  .body .top{flex-direction:column;align-items:flex-start;gap:10px}
   .about{padding-block:16px 80px;gap:24px}
   .about .text{font-size:16px}
+  footer .top{flex-direction:column;gap:36px}
+  footer .cols{display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;gap:24px;width:100%}
+  footer .legal{flex-direction:column;gap:6px}
 }
 </style>
 </head>
@@ -330,8 +335,8 @@ html.dark .card:hover{border-color:rgba(255,255,255,.18)}
       <div class="team">
         <p class="label">Founders</p>
         <div class="people">
-          <a class="person" href="https://www.linkedin.com/in/saurav-roy-ubc" target="_blank" rel="noopener"><span class="av" aria-hidden="true">SR</span><span class="who"><b>Saurav Roy</b><span class="li"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</span></span><span class="arrow" aria-hidden="true">↗</span></a>
-          <a class="person" href="https://www.linkedin.com/in/shrabanti-bala-joya" target="_blank" rel="noopener"><span class="av" aria-hidden="true">SJ</span><span class="who"><b>Shrabanti Bala Joya</b><span class="li"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</span></span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="person" href="https://www.linkedin.com/in/saurav-roy-ubc" target="_blank" rel="noopener"><span class="av" aria-hidden="true">SR</span><span class="who"><b>Saurav Roy</b><span class="li"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</span></span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11 11 5M6 5h5v5"/></svg></span></a>
+          <a class="person" href="https://www.linkedin.com/in/shrabanti-bala-joya" target="_blank" rel="noopener"><span class="av" aria-hidden="true">SJ</span><span class="who"><b>Shrabanti Bala Joya</b><span class="li"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</span></span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11 11 5M6 5h5v5"/></svg></span></a>
         </div>
       </div>
     </div>
@@ -357,12 +362,14 @@ html.dark .card:hover{border-color:rgba(255,255,255,.18)}
     </div>
   </div>
 </footer>
+<div class="pop-wrap">
 <aside class="news news-float" aria-label="Cadex launch">
   <button type="button" class="x" aria-label="Close" onclick="this.parentNode.classList.add('closed');try{sessionStorage.setItem('cadexPopClosed','1')}catch(e){}">×</button>
   <div class="ft"><span class="pl-cadex"><svg class="cmini" viewBox="-2 -2 28 28" aria-hidden="true"><rect width="24" height="24" rx="5.5" fill="#1B3327"></rect><g transform="translate(2.6 2.8) scale(0.8)"><path d="M11 2 13.1 8.9 18.5 11 13.1 13.1 11 20 8.9 13.1 3.5 11 8.9 8.9Z" fill="none" stroke="#FAF8F2" stroke-width="1.6" stroke-linejoin="round"></path><path d="M11 2 13.1 8.9 11 11ZM18.5 11 13.1 13.1 11 11ZM11 20 8.9 13.1 11 11ZM3.5 11 8.9 8.9 11 11Z" fill="#FAF8F2"></path><rect x="16.6" y="16.6" width="3.8" height="3.8" rx="0.5" fill="#D6906F"></rect></g></svg></span><span class="label">New from VIBIN AI LABS</span></div>
   <p><a class="pop-link" href="cadex/"><b>Cadex is <span class="o1">launching soon</span>.</b></a><span class="line2">Your <span class="o2">AI land analyst</span> for land and environmental projects.</span></p>
   <a class="btn" href="cadex/#early">Get early access →</a>
 </aside>
+</div>
 <script>
 /* Fluid band: a small canvas of domain-warped noise, scaled up and blurred so the colours flow like water. */
 (function(){
