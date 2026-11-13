@@ -937,6 +937,13 @@ if(location.hash){document.documentElement.style.scrollBehavior='auto';addEventL
   function q(){if(!queued){queued=true;requestAnimationFrame(run);}}
   addEventListener('scroll',q,{passive:true});addEventListener('resize',q);addEventListener('load',q);q();
 })();
+/* bigger screens: give the notes beside the hero shot the same width as the longest one */
+(function(){
+  var fl=[].slice.call(document.querySelectorAll('.stage>.float'));if(!fl.length)return;
+  function eq(){fl.forEach(function(f){f.style.width='';});var w=0;fl.forEach(function(f){w=Math.max(w,f.getBoundingClientRect().width);});
+    if(w)fl.forEach(function(f){f.style.width=Math.ceil(w)+'px';});}
+  addEventListener('load',eq);addEventListener('resize',eq);if(document.fonts)document.fonts.ready.then(eq);eq();
+})();
 </script>
 <script>
 (function(){
