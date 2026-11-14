@@ -334,7 +334,7 @@ html.dark .card:hover{border-color:rgba(255,255,255,.18)}
     </div>
     <div class="text">
       <p>VIBIN AI LABS is based out of Vancouver, British Columbia. We are a small team of engineers building AI agents and platforms for different fields.</p>
-      <p id="contact">For questions about our products, or to work with us, reach out at <span class="mail">info@vibinlabs.si</span></p>
+      <p id="contact">For questions about our products, or to work with us, reach out at <span class="mail"><span data-em="info|vibinlabs.si">info [at] vibinlabs [dot] si</span></span></p>
       <div class="team">
         <p class="label">Founders</p>
         <div class="people">
@@ -428,5 +428,6 @@ setTimeout(function(){pop.classList.add('in')},7000);
   }
 })();
 </script>
+<script>/* build email links in the browser so simple scrapers can't read them */document.querySelectorAll("[data-em]").forEach(function(e){var p=e.getAttribute("data-em").split("|"),a=p[0]+String.fromCharCode(64)+p[1];e.textContent=a;if(e.tagName==="A")e.href="mai"+"lto:"+a;});</script>
 </body>
 </html>

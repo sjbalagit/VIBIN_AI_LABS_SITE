@@ -49,7 +49,7 @@ footer a{color:var(--plum-muted)}
 </div>
 
 <h2>Who we are and how to reach us</h2>
-<p>VIBIN AI LABS INC.<br>Vancouver, British Columbia, Canada<br>Privacy questions, access requests and complaints: info@vibinlabs.si</p>
+<p>VIBIN AI LABS INC.<br>Vancouver, British Columbia, Canada<br>Privacy questions, access requests and complaints: <span data-em="info|vibinlabs.si">info [at] vibinlabs [dot] si</span></p>
 <p>We have designated a Privacy Officer who is accountable for personal information under Canadian privacy law.</p>
 
 <h2>What we collect</h2>
@@ -74,7 +74,7 @@ footer a{color:var(--plum-muted)}
 <tbody>
 <tr><td>GitHub (GitHub Pages)</td><td>Hosts the website</td><td>United States and other countries</td></tr>
 <tr><td>Google Fonts</td><td>Delivers the website's fonts</td><td>United States and other countries</td></tr>
-<tr><td>Our email providers</td><td>Receive and store messages sent to info@vibinlabs.si</td><td>May be outside Canada</td></tr>
+<tr><td>Our email providers</td><td>Receive and store messages sent to <span data-em="info|vibinlabs.si">info [at] vibinlabs [dot] si</span></td><td>May be outside Canada</td></tr>
 </tbody></table></div>
 <p>We do not sell your personal information and we do not share it for anyone else's marketing. We may disclose information if the law requires it, if we need to establish or defend a legal claim, or as part of a merger or sale of the business, in which case this policy continues to apply to the information transferred.</p>
 
@@ -91,7 +91,7 @@ footer a{color:var(--plum-muted)}
 <p>We use access controls and encryption in transit, and we limit access to the people who need it. No method of transmission or storage is completely secure, so we cannot guarantee absolute security. If a breach of our security safeguards creates a real risk of significant harm to you, we will notify you and the Office of the Privacy Commissioner of Canada, as the law requires.</p>
 
 <h2>Your rights</h2>
-<p>You can ask what personal information we hold about you and get a copy, ask us to correct it, or withdraw your consent and ask us to delete it, subject to any legal requirement to keep it. Email info@vibinlabs.si. We respond within 30 days and may ask you to confirm your identity first.</p>
+<p>You can ask what personal information we hold about you and get a copy, ask us to correct it, or withdraw your consent and ask us to delete it, subject to any legal requirement to keep it. Email <span data-em="info|vibinlabs.si">info [at] vibinlabs [dot] si</span>. We respond within 30 days and may ask you to confirm your identity first.</p>
 <p>If you are not satisfied with our response, you can complain to the Office of the Privacy Commissioner of Canada at <a href="https://www.priv.gc.ca">priv.gc.ca</a> or the Office of the Information and Privacy Commissioner for British Columbia at <a href="https://www.oipc.bc.ca">oipc.bc.ca</a>.</p>
 
 <h2>Children</h2>
@@ -101,5 +101,6 @@ footer a{color:var(--plum-muted)}
 <p>We will post any changes on this page and update the effective date. If a change affects how we use information you have already given us, we will ask for your consent first.</p>
 </main>
 <footer><div class="wrap"><span>© 2026 VIBIN AI LABS INC.</span><span>Vancouver, British Columbia, Canada</span></div></footer>
+<script>/* build email links in the browser so simple scrapers can't read them */document.querySelectorAll("[data-em]").forEach(function(e){var p=e.getAttribute("data-em").split("|"),a=p[0]+String.fromCharCode(64)+p[1];e.textContent=a;if(e.tagName==="A")e.href="mai"+"lto:"+a;});</script>
 </body>
 </html>
